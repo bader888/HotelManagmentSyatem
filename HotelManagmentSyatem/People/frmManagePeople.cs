@@ -19,7 +19,6 @@ namespace HotelManagmentSyatem.People
 
         }
 
-
         private void btnMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
@@ -43,6 +42,7 @@ namespace HotelManagmentSyatem.People
         {
             frmAddEditPerson frm = new frmAddEditPerson();
             frm.ShowDialog();
+            frmManagePeople_Load(null, null);
 
         }
 
@@ -69,13 +69,7 @@ namespace HotelManagmentSyatem.People
         {
             Form frm = new frmAddEditPerson((int)dgvPeople.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
-
             frmManagePeople_Load(null, null);
-
-        }
-
-        private void bunifuLabel3_Click(object sender, EventArgs e)
-        {
 
         }
 
@@ -159,6 +153,14 @@ namespace HotelManagmentSyatem.People
         {
             frmPersonDetails frm = new frmPersonDetails((int)dgvPeople.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
+
+        }
+
+        private void bunifuImageButton1_Click_1(object sender, EventArgs e)
+        {
+            frmAddEditPerson frm = new frmAddEditPerson();
+            frm.ShowDialog();
+            frmManagePeople_Load(null, null);
 
         }
     }

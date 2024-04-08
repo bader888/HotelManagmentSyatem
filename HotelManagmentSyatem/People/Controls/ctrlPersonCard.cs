@@ -18,6 +18,7 @@ namespace HotelManagmentSyatem.People.Controls
             get { return _PersonID; }
         }
 
+
         public clsPerson SelectedPersonInfo
         {
             get { return _Person; }
@@ -41,18 +42,18 @@ namespace HotelManagmentSyatem.People.Controls
             _FillPersonInfo();
         }
 
-        //public void LoadPersonInfo(string NationalNo)
-        //{
-        //    _Person = clsPerson.FindPersonByID(NationalNo);
-        //    if (_Person == null)
-        //    {
-        //        ResetPersonInfo();
-        //        MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return;
-        //    }
+        public void LoadPersonInfo(string NationalNo)
+        {
+            _Person = clsPerson.FindPersonByNationalNO(NationalNo);
+            if (_Person == null)
+            {
+                ResetPersonInfo();
+                MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
-        //    _FillPersonInfo();
-        //}
+            _FillPersonInfo();
+        }
 
         private void _LoadPersonImage()
         {
@@ -72,11 +73,11 @@ namespace HotelManagmentSyatem.People.Controls
 
         private void _FillPersonInfo()
         {
-            llEditPersonInfo.Enabled = true;
             _PersonID = (int)_Person.PersonID;
+            llEditPersonInfo.Enabled = true;
             lblPersonID.Text = _Person.PersonID.ToString();
             lblNationalNo.Text = _Person.NationalNo;
-            lblFullName.Text = _Person.FirstName;
+            lblFullName.Text = _Person.FullName;
             lblGendor.Text = _Person.Gender == 0 ? "Male" : "Female";
             lblEmail.Text = _Person.Email;
             lblPhone.Text = _Person.Phone;

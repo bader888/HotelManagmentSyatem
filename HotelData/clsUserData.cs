@@ -155,6 +155,41 @@ namespace HotelData
 
         }
 
+        public static bool IsUserExist(string userName)
+        {
+            bool isFound = true;
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change procedure name
+                using (SqlCommand command = new SqlCommand("sp_IsUserExistbyUserName", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@UserName", userName);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+
+                            reader.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+
+                        // clsLog.LogMessageError(ex.Message);
+
+                        return false;
+                    }
+                }
+                return isFound;
+            }
+
+        }
+
         //----GET BY ID FUNCTION---
         public static DataTable FindUserbyID(int userID)
         {
@@ -224,5 +259,76 @@ namespace HotelData
             }
             return RowsEffected > 0;
         }
+
+        public static bool IsUserExistsForPersonID(int PersonID)
+        {
+            bool isFound = true;
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change procedure name
+                using (SqlCommand command = new SqlCommand("sp_IsUserExistForPersonID", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@PersonID", PersonID);
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            isFound = reader.HasRows;
+
+                            reader.Close();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+
+                        // clsLog.LogMessageError(ex.Message);
+
+                        return false;
+                    }
+                }
+                return isFound;
+            }
+        }
+
+        enum enLoginStatus
+        {
+            Success = 1
+        }
+
+        public static bool UserLogin(string UserName, string Password)
+        {
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change procedure name
+                using (SqlCommand command = new SqlCommand("sp_UserLogin", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@Username", UserName);
+                    command.Parameters.AddWithValue("@Password", Password);
+                    try
+                    {
+                        connection.Open();
+                        object LoginSuccess = command.ExecuteScalar();
+                        return (int)LoginSuccess == (int)enLoginStatus.Success;
+                    }
+                    catch (Exception ex)
+                    {
+                        //clsLog.LogMessageError(ex.Message);
+                        Console.WriteLine(ex.Message);
+                        return false;
+                    }
+                }
+
+            }
+
+        }
     }
+
+
 }
+

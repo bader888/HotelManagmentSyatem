@@ -1,4 +1,5 @@
 ﻿using HotelData;
+using System.Collections.Generic;
 using System.Data;
 
 namespace HotelLogic
@@ -7,6 +8,17 @@ namespace HotelLogic
     {
 
         //--PROPARTIES
+        public static Dictionary<int, string> UserRoleMapping = new Dictionary<int, string>
+        {
+
+            {1,"Admin" },
+            {2,"Manager" },
+            {3,"Reciption" },
+            {4,"Accounting" },
+            {5,"Customer" }
+        };
+
+
         public int? UserID { set; get; }
         public int? PersonID { set; get; }
         public string UserName { set; get; }
@@ -136,7 +148,19 @@ namespace HotelLogic
             return clsUserData.IsUserExist(userID);
         }
 
+        public static bool isuserExist(string userName)
+        {
+            return clsUserData.IsUserExist(userName);
+        }
 
+        public static bool isUserExistForPersonID(int PersonID)
+        {
+            return clsUserData.IsUserExistsForPersonID(PersonID);
+        }
 
+        public static bool UserLogin(string UaserName, string Password)
+        {
+            return clsUserData.UserLogin(UaserName, Password);
+        }
     }
 }

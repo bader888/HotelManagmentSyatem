@@ -58,6 +58,10 @@
       <Project>{92ee8e2f-b947-4ad7-8790-d60d6fa4d7ad}</Project>
       <Name>HotelLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HotelManagmentSyatem\HotelManagmentSyatem.csproj">
+      <Project>{69784a40-1606-40d3-95a0-c438287433d7}</Project>
+      <Name>HotelManagmentSyatem</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

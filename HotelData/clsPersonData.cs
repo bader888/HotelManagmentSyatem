@@ -239,6 +239,40 @@ namespace HotelData
             return dt;
         }
 
+        public static DataTable FindPersonByNationalNo(string NatoinalNo)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change the procedure name
+                using (SqlCommand command = new SqlCommand("sp_FindPersonByNationalNo", connection))
+                {
+
+                    try
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@NationalNo", NatoinalNo);
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+
+                        //clsLog.LogMessageError(ex.Message);
+                    }
+
+                }
+            }
+            return dt;
+        }
+
         //----UPDATE FUNCTION---
         public static bool UpdatePerson(int PersonID, string NationalNo, string FirstName, string SecondName, string ThirdName, string LastName, DateTime DateOfBirth, byte Gender, string Address, string Phone, string Email, int NationalityCountryID, string ImagePath)
         {

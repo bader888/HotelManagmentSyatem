@@ -87,12 +87,68 @@ namespace HotelManagmentSyatem.Global_Classes
         }
 
         //registry
-        public static void DeleteFromRegistry()
+
+        public static void GetCurrentUserFromRegistry(ref string UserName, ref string Password, ref string Visitor)
         {
-            // Specify the registry key path and value name
-            string keyPath = @"SOFTWARE\DVLD";
+            string keyPath = @"HKEY_CURRENT_USER\SOFTWARE\HotelManagmentSystem";
             string UsernameValue = "Current_User_Name";
             string PasswordValue = "Current_User_Password";
+            string VisitorValue = "Current_Visitor";
+
+
+            try
+            {
+                // Read the value from the Registry
+                string value1 = Registry.GetValue(keyPath, UsernameValue, null) as string;
+                string value2 = Registry.GetValue(keyPath, PasswordValue, null) as string;
+                string value3 = Registry.GetValue(keyPath, VisitorValue, null) as string;
+
+                if (value1 != null && value2 != null && value3 != null)
+                {
+                    UserName = value1; Password = value2; Visitor = value3;
+                }
+                else
+                {
+                    UserName = null; Password = null; Visitor = null;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
+
+        public static void WriteCurrentUserToRegistry(string UserName, string Password, string Visitor)
+        {
+            // Specify the Registry key and path
+            string keyPath = @"HKEY_CURRENT_USER\SOFTWARE\HotelManagmentSystem";
+            string UsernameValue = "Current_User_Name";
+            string UserNameData = UserName;
+            string PasswordValue = "Current_User_Password";
+            string PasswordData = Password;
+            string VisitorValue = "Current_Visitor";
+            string VisitorData = Visitor;
+
+            try
+            {
+                // Write the value to the Registry
+                Registry.SetValue(keyPath, UsernameValue, UserNameData, RegistryValueKind.String);
+                Registry.SetValue(keyPath, PasswordValue, PasswordData, RegistryValueKind.String);
+                Registry.SetValue(keyPath, VisitorValue, VisitorData, RegistryValueKind.String);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public static void RemoveCurrentUserFromRegistry()
+        {
+            // Specify the registry key path and value name
+            string keyPath = @"SOFTWARE\HotelManagmentSystem";
+            string UsernameValue = "Current_User_Name";
+            string PasswordValue = "Current_User_Password";
+            string VisitorValue = "Current_Visitor";
 
             try
             {
@@ -106,6 +162,7 @@ namespace HotelManagmentSyatem.Global_Classes
                             // Delete the specified value
                             key.DeleteValue(UsernameValue);
                             key.DeleteValue(PasswordValue);
+                            key.DeleteValue(VisitorValue);
                         }
                         else
                         {
@@ -116,61 +173,13 @@ namespace HotelManagmentSyatem.Global_Classes
             }
             catch (UnauthorizedAccessException)
             {
-                //   MessageBox.Show("UnauthorizedAccessException: Run the program with administrative privileges.");
+                Console.WriteLine("UnauthorizedAccessException: Run the program with administrative privileges.");
             }
             catch (Exception ex)
             {
-                LogMessageError(ex.Message);
+                Console.WriteLine(ex.Message);
             }
         }
-
-        public static void WriteToRegistry(string UserName, string Password)
-        {
-            // Specify the Registry key and path
-            string keyPath = @"HKEY_CURRENT_USER\SOFTWARE\DVLD";
-            string UsernameValue = "Current_User_Name";
-            string UserNameData = UserName;
-            string PasswordValue = "Current_User_Password";
-            string PasswordData = Password;
-
-            try
-            {
-                // Write the value to the Registry
-                Registry.SetValue(keyPath, UsernameValue, UserNameData, RegistryValueKind.String);
-                Registry.SetValue(keyPath, PasswordValue, PasswordData, RegistryValueKind.String);
-            }
-            catch (Exception ex)
-            {
-                LogMessageError(ex.Message);
-            }
-        }
-
-        public static void ReadFromRegistry(ref string UserName, ref string Password)
-        {
-            string keyPath = @"HKEY_CURRENT_USER\SOFTWARE\DVLD";
-            string UsernameValue = "Current_User_Name";
-            string PasswordValue = "Current_User_Password";
-            try
-            {
-                // Read the value from the Registry
-                string value1 = Registry.GetValue(keyPath, UsernameValue, null) as string;
-                string value2 = Registry.GetValue(keyPath, PasswordValue, null) as string;
-
-                if (value1 != null && value2 != null)
-                {
-                    UserName = value1; Password = value2;
-                }
-                else
-                {
-                    UserName = null; Password = null;
-                }
-            }
-            catch (Exception ex)
-            {
-                LogMessageError($"An error occurred: {ex.Message}");
-            }
-        }
-
         //event log
         static string sourceName = ConfigurationManager.AppSettings["ProjectName"];
 

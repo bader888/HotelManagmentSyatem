@@ -15,6 +15,14 @@ namespace HotelLogic
         public string SecondName { set; get; }
         public string ThirdName { set; get; }
         public string LastName { set; get; }
+
+        public string FullName
+        {
+            get
+            {
+                return string.Concat(FirstName, " ", SecondName, " ", ThirdName, " ", LastName);
+            }
+        }
         public DateTime? DateOfBirth { set; get; }
         public byte? Gender { set; get; }
         public string Address { set; get; }
@@ -167,6 +175,32 @@ namespace HotelLogic
                 return null;
         }
 
+        static public clsPerson FindPersonByNationalNO(string NationalNo)
+        {
+            DataTable dtPerson = clsPersonData.FindPersonByNationalNo(NationalNo);
+            if (dtPerson.Rows.Count > 0)
+            {
+                DataRow rowPerson = dtPerson.Rows[0];//get the first row  
+
+                return new clsPerson(
+                       (int)rowPerson["PersonID"],
+                            (string)rowPerson["NationalNo"],
+                            (string)rowPerson["FirstName"],
+                            (string)rowPerson["SecondName"],
+                            (string)rowPerson["ThirdName"],
+                            rowPerson["LastName"] == DBNull.Value ? null : (string)rowPerson["LastName"],
+                            (DateTime)rowPerson["DateOfBirth"],
+                            (byte)rowPerson["Gender"],
+                            (string)rowPerson["Address"],
+                            (string)rowPerson["Phone"],
+                            rowPerson["Email"] == DBNull.Value ? null : (string)rowPerson["Email"],
+                            (int)rowPerson["NationalityCountryID"],
+                            (string)rowPerson["ImagePath"]
+                    );
+            }
+            else
+                return null;
+        }
         //--GET ALL 
         public static DataTable GetAllPeople()
         {

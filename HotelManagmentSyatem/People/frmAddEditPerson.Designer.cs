@@ -295,7 +295,7 @@
             this.btnClose.IdleIconLeftImage = null;
             this.btnClose.IdleIconRightImage = global::HotelManagmentSyatem.Properties.Resources.Close_32;
             this.btnClose.IndicateFocus = false;
-            this.btnClose.Location = new System.Drawing.Point(394, 322);
+            this.btnClose.Location = new System.Drawing.Point(403, 340);
             this.btnClose.Name = "btnClose";
             this.btnClose.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnClose.OnDisabledState.BorderRadius = 15;
@@ -385,7 +385,7 @@
             this.btnSave.IdleIconLeftImage = null;
             this.btnSave.IdleIconRightImage = global::HotelManagmentSyatem.Properties.Resources.Save_32;
             this.btnSave.IndicateFocus = false;
-            this.btnSave.Location = new System.Drawing.Point(553, 322);
+            this.btnSave.Location = new System.Drawing.Point(562, 340);
             this.btnSave.Name = "btnSave";
             this.btnSave.OnDisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(191)))), ((int)(((byte)(191)))), ((int)(((byte)(191)))));
             this.btnSave.OnDisabledState.BorderRadius = 15;
@@ -501,6 +501,7 @@
             this.txtAddress.TextPlaceholder = "Enter text";
             this.txtAddress.UseSystemPasswordChar = false;
             this.txtAddress.WordWrap = true;
+            this.txtAddress.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyText);
             // 
             // lblFemale
             // 
@@ -732,6 +733,7 @@
             this.txtnationalNo.TextPlaceholder = "Enter text";
             this.txtnationalNo.UseSystemPasswordChar = false;
             this.txtnationalNo.WordWrap = true;
+            this.txtnationalNo.Validating += new System.ComponentModel.CancelEventHandler(this.txtNationalNo_Validating);
             // 
             // txtEmail
             // 
@@ -806,6 +808,7 @@
             this.txtEmail.TextPlaceholder = "Enter text";
             this.txtEmail.UseSystemPasswordChar = false;
             this.txtEmail.WordWrap = true;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // txtLname
             // 
@@ -954,6 +957,7 @@
             this.txtTname.TextPlaceholder = "Enter text";
             this.txtTname.UseSystemPasswordChar = false;
             this.txtTname.WordWrap = true;
+            this.txtTname.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyText);
             // 
             // txtSname
             // 
@@ -1028,6 +1032,7 @@
             this.txtSname.TextPlaceholder = "Enter text";
             this.txtSname.UseSystemPasswordChar = false;
             this.txtSname.WordWrap = true;
+            this.txtSname.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyText);
             // 
             // txtfName
             // 
@@ -1102,6 +1107,7 @@
             this.txtfName.TextPlaceholder = "Enter text";
             this.txtfName.UseSystemPasswordChar = false;
             this.txtfName.WordWrap = true;
+            this.txtfName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyText);
             // 
             // llRemoveImage
             // 
@@ -1433,7 +1439,7 @@
             this.lblHeader.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblHeader.CursorType = System.Windows.Forms.Cursors.Default;
             this.lblHeader.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Bold);
-            this.lblHeader.Location = new System.Drawing.Point(369, 28);
+            this.lblHeader.Location = new System.Drawing.Point(369, 25);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.lblHeader.Size = new System.Drawing.Size(213, 37);
@@ -1517,7 +1523,6 @@
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cbCountry;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -1545,5 +1550,6 @@
         private Bunifu.UI.WinForms.BunifuLabel lblHeader;
         private Bunifu.UI.WinForms.BunifuSeparator bunifuSeparator1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse2;
+        private System.Windows.Forms.ComboBox cbCountry;
     }
 }

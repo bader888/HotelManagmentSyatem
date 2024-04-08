@@ -23,13 +23,13 @@ namespace HotelManagmentSyatem.People
 
         private enMode _Mode;
         private int _PersonID = -1;
-        clsPerson _Person;
-
+        clsPerson _Person = new clsPerson();
 
         public frmAddEditPerson()
         {
             InitializeComponent();
             _Mode = enMode.AddNew;
+
         }
 
         public frmAddEditPerson(int PersonID)
@@ -159,7 +159,7 @@ namespace HotelManagmentSyatem.People
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro", " Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
             }
@@ -178,12 +178,13 @@ namespace HotelManagmentSyatem.People
             _Person.Address = txtAddress.Text.Trim();
             _Person.DateOfBirth = dtpDateOfBirth.Value;
 
+
             if (rbMale.Checked)
                 _Person.Gender = (byte)enGendor.Male;
             else
                 _Person.Gender = (byte)enGendor.Female;
 
-            _Person.NationalityCountryID = NationalityCountryID;
+            _Person.NationalityCountryID = 1;
 
             if (pbPerson.ImageLocation != null)
                 _Person.ImagePath = pbPerson.ImageLocation;
@@ -193,6 +194,7 @@ namespace HotelManagmentSyatem.People
             if (_Person.Save())
             {
                 lblPersonID.Text = _Person.PersonID.ToString();
+
                 //change form mode to update.
                 _Mode = enMode.Update;
                 lblHeader.Text = "Update Person";
@@ -257,17 +259,17 @@ namespace HotelManagmentSyatem.People
                 errorProvider1.SetError(txtnationalNo, null);
             }
 
-            //Make sure the national number is not used by another person
-            if (txtnationalNo.Text.Trim() != _Person.NationalNo && clsPerson.isPersonExist(txtnationalNo.Text.Trim()))
-            {
-                e.Cancel = true;
-                errorProvider1.SetError(txtnationalNo, "National Number is used for another person!");
+            ////Make sure the national number is not used by another person
+            //if (txtnationalNo.Text.Trim() != _Person.NationalNo && clsPerson.isPersonExist(txtnationalNo.Text.Trim()))
+            //{
+            //    e.Cancel = true;
+            //    errorProvider1.SetError(txtnationalNo, "National Number is used for another person!");
 
-            }
-            else
-            {
-                errorProvider1.SetError(txtnationalNo, null);
-            }
+            //}
+            //else
+            //{
+            //    errorProvider1.SetError(txtnationalNo, null);
+            //}
         }
 
         private void llSetImage_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
