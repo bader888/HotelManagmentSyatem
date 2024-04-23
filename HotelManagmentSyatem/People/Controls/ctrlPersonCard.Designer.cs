@@ -375,7 +375,6 @@
             this.bunifuCards1.Controls.Add(this.pbPersonImage);
             this.bunifuCards1.Controls.Add(this.bunifuLabel1);
             this.bunifuCards1.Controls.Add(this.bunifuSeparator1);
-            this.bunifuCards1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.bunifuCards1.LeftSahddow = false;
             this.bunifuCards1.Location = new System.Drawing.Point(0, 0);
             this.bunifuCards1.Name = "bunifuCards1";

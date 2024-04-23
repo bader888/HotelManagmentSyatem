@@ -1,0 +1,44 @@
+room information
+1-room number
+2-room type
+3-room status
+4-room rate
+5-room price
+6-view
+7-facilities
+8-images
+9-descrption
+10-room size
+11-isPetFriendly
+12-somke allowed
+
+
+-->room facilities (id, name)
+BalconyCity 
+viewAir 
+conditioning
+Private bathroomFlat
+screen-TV 
+Soundproofing
+Minibar
+Free WiFi
+Flat-screen TV
+Wake-up service
+Sofa
+Towels
+Entire unit wheelchair accessible
+Ironing faci
+
+
+-->view:(id, name)
+Balcony
+Garden view
+Pool view
+City view
+
+-->room type (id, name, price)
+Classic King Room
+Classic Twin Room
+Deluxe Twin Room
+Premium Twin Room
+Premium King Room

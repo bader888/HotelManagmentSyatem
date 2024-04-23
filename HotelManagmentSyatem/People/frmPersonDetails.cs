@@ -13,7 +13,6 @@ namespace HotelManagmentSyatem.People
 
             await Task.Delay(50);
             bunifuTransition1.ShowSync(ctrlPersonCard1, false, Animation.ScaleAndHorizSlide);
-
             ctrlPersonCard1.LoadPersonInfo((int)_personID);
 
         }

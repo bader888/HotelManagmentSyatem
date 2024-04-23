@@ -105,7 +105,6 @@ namespace HotelLogic
                     }
                 default:
                     return false;
-
             }
         }
 

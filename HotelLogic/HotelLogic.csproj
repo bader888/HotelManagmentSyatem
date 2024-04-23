@@ -46,6 +46,11 @@
     <Compile Include="clsFacilite.cs" />
     <Compile Include="clsHotel.cs" />
     <Compile Include="clsPerson.cs" />
+    <Compile Include="clsReservation.cs" />
+    <Compile Include="clsRoom.cs" />
+    <Compile Include="clsRoomFacility.cs" />
+    <Compile Include="clsRoomImages.cs" />
+    <Compile Include="clsRoomType.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsUserLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

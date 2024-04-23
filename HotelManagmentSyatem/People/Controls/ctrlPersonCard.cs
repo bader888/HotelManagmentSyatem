@@ -10,14 +10,11 @@ namespace HotelManagmentSyatem.People.Controls
     public partial class ctrlPersonCard : UserControl
     {
         private clsPerson _Person;
-
         private int _PersonID = -1;
-
         public int PersonID
         {
             get { return _PersonID; }
         }
-
 
         public clsPerson SelectedPersonInfo
         {

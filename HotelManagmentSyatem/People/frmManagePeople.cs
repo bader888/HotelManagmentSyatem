@@ -163,5 +163,10 @@ namespace HotelManagmentSyatem.People
             frmManagePeople_Load(null, null);
 
         }
+
+        private void txtSearch_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }

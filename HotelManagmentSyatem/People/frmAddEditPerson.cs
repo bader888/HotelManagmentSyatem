@@ -11,7 +11,6 @@ namespace HotelManagmentSyatem.People
 {
     public partial class frmAddEditPerson : Form
     {
-
         // Declare a delegate
         public delegate void DataBackEventHandler(object sender, int PersonID);
 
@@ -19,10 +18,13 @@ namespace HotelManagmentSyatem.People
         public event DataBackEventHandler DataBack;
 
         public enum enMode { AddNew = 0, Update = 1 };
+
         public enum enGendor { Male = 0, Female = 1 };
 
         private enMode _Mode;
+
         private int _PersonID = -1;
+
         clsPerson _Person = new clsPerson();
 
         public frmAddEditPerson()
@@ -207,6 +209,8 @@ namespace HotelManagmentSyatem.People
             }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
         }
 
 

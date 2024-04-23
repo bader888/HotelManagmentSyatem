@@ -1,12 +1,11 @@
-﻿using System.Configuration;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 
 namespace HotelData
 {
     public class clsErrorLog
     {
 
-        static string sourceName = ConfigurationManager.AppSettings["ProjectName"];
+        static string sourceName = "Hotel managment system";
 
         public static void LogMessageError(string messageError)
         {

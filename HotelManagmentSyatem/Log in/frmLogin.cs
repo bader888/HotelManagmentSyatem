@@ -20,9 +20,13 @@ namespace HotelManagmentSyatem.Log_in
         {
             InitializeComponent();
         }
+
         int _logInTry = -1;
+
         int _logInTryCustomer = -1;
+
         bool showPassword = false;
+
         private void frmLogin_Load(object sender, EventArgs e)
         {
             string Username = null;
@@ -124,8 +128,6 @@ namespace HotelManagmentSyatem.Log_in
 
         private void btnSignInUser_Click(object sender, EventArgs e)
         {
-
-
             if (clsUser.UserLogin(txtUserName.Text.Trim(), clsEncrypted.HashPassword(txtPassword.Text.Trim())))
             {
 
@@ -240,6 +242,11 @@ namespace HotelManagmentSyatem.Log_in
             {
                 errorProvider1.SetError(txtCustomerEmail, null);
             };
+
+        }
+
+        private void ckbRememberUser_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+        {
 
         }
     }

@@ -67,9 +67,12 @@
     <Compile Include="clsFacilitieData.cs" />
     <Compile Include="clsHotelData.cs" />
     <Compile Include="clsHotelFacilitieData.cs" />
-    <Compile Include="clsHotelImageData.cs" />
-    <Compile Include="clsImageData.cs" />
     <Compile Include="clsPersonData.cs" />
+    <Compile Include="clsReservationData.cs" />
+    <Compile Include="clsRoomData.cs" />
+    <Compile Include="clsRoomFacilityData.cs" />
+    <Compile Include="clsRoomImagesData.cs" />
+    <Compile Include="clsRoomTypeData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="clsUserLoginData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

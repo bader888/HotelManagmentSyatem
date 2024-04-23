@@ -1,4 +1,4 @@
-﻿using HotelManagmentSyatem.Log_in;
+﻿using HotelManagmentSyatem.Reservation;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +14,7 @@ namespace HotelManagmentSyatem
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmLogin());
+            Application.Run(new frmCustomersMain());
         }
     }
 }
