@@ -1,7 +1,6 @@
 ﻿using Bunifu.UI.WinForms;
 using HotelLogic;
 using HotelManagmentSyatem.Room_Type;
-using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -41,11 +40,14 @@ namespace HotelManagmentSyatem.Room
             if (_Mode == enMode.AddNew)
             {
                 lblHeader.Text = "Add New Room";
+                this.Text = "Add New Room";
+
                 _Room = new clsRoom();
             }
             else
             {
                 lblHeader.Text = "Update Room";
+                this.Text = "Update Room";
             }
 
             txtDescription.Text = string.Empty;
@@ -62,6 +64,8 @@ namespace HotelManagmentSyatem.Room
 
         private void _FillRoomTypeInComoboBox()
         {
+            cbRoomType.Items.Clear();
+
             DataTable dtCountries = clsRoomType.GetAllRoomType();
 
             foreach (DataRow row in dtCountries.Rows)
@@ -77,7 +81,7 @@ namespace HotelManagmentSyatem.Room
 
             if (_Room == null)
             {
-                MaterialMessageBox.Show("No Room with ID = " + _Room, "Room Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No Room with ID = " + _Room, "Room Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -139,7 +143,7 @@ namespace HotelManagmentSyatem.Room
             _Room.room_number = int.Parse(txtRoomNumber.Text.Trim());
             _Room.room_view = (byte)(cbRoomView.SelectedIndex + 1);
             _Room.room_size = (byte)(cbRoomSize.SelectedIndex + 1);
-            _Room.room_type_id = (int)cbRoomType.SelectedIndex + 1;
+            _Room.room_type_id = clsRoomType.FindRoomTypeByName(cbRoomType.SelectedItem.ToString()).type_id;
             _Room.number_of_beds = (int)nupNumberOFBeds.Value;
             _Room.number_of_people = (int)nupNumberOFpeople.Value;
             _Room.is_pet_friendly = ckIsPetsFriendlly.Checked == true;
@@ -153,21 +157,58 @@ namespace HotelManagmentSyatem.Room
                 //change form mode to update.
                 _Mode = enMode.Update;
                 lblHeader.Text = "Update Room";
-                MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Text = "Update Room";
+
+                bunifuSnackbar1.Show(this, "Data Saved Successfully.", BunifuSnackbar.MessageTypes.Success);
 
                 //Trigger the event to send data back to the caller form.
                 DataBack?.Invoke(this, (int)_Room.room_id, _Mode);
             }
             else
-                MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bunifuSnackbar1.Show(this, "Error: Data Is not Saved Successfully..", BunifuSnackbar.MessageTypes.Error);
+
         }
 
         private void btnAddNewRoomType_Click(object sender, EventArgs e)
         {
             frmAddEditRoomType frm = new frmAddEditRoomType();
             frm.ShowDialog();
+
             _FillRoomTypeInComoboBox();
 
         }
+
+        private void ValidateRoomNumberT(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtRoomNumber.Text.Trim()))
+            {
+                errorProvider1.SetError(txtRoomNumber, "This field is required!");
+                e.Cancel = true;
+                return;
+            }
+            else
+                errorProvider1.SetError(txtRoomNumber, null);
+
+
+            if (clsRoom.FindbyRoomNumber(int.Parse(txtRoomNumber.Text.Trim())) != null)
+
+            {
+                errorProvider1.SetError(txtRoomNumber, "This Room Number Used for another room");
+                e.Cancel = true;
+            }
+            else
+                errorProvider1.SetError(txtRoomNumber, null);
+
+        }
+
+        private void txtRoomNumber_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Allow only numbers, backspace, and delete key
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true; // Ignore the key press
+            }
+        }
     }
 }
+

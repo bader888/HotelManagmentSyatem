@@ -7,6 +7,7 @@ namespace HotelLogic
     public class clsCountry
     {
 
+
         //--PROPARTIES
         public int? CountryID { set; get; }
         public string CountryName { set; get; }

@@ -1,7 +1,6 @@
 ﻿using HotelLogic;
 using HotelManagmentSyatem.Global_Classes;
 using HotelManagmentSyatem.Properties;
-using MaterialSkin.Controls;
 using System;
 using System.ComponentModel;
 using System.Windows.Forms;
@@ -85,7 +84,7 @@ namespace HotelManagmentSyatem.Users
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MaterialMessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
@@ -94,13 +93,13 @@ namespace HotelManagmentSyatem.Users
 
             if (_User.Save())
             {
-                MaterialMessageBox.Show("Password Changed Successfully.",
+                MessageBox.Show("Password Changed Successfully.",
                    "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 _ResetDefualtValues();
             }
             else
             {
-                MaterialMessageBox.Show("An Erro Occured, Password did not change.",
+                MessageBox.Show("An Erro Occured, Password did not change.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

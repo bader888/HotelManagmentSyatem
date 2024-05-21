@@ -1,13 +1,11 @@
 ﻿using HotelLogic;
 using HotelManagmentSyatem.Global_Classes;
-using MaterialSkin;
-using MaterialSkin.Controls;
 using System.Drawing;
 using System.Windows.Forms;
 
 namespace HotelManagmentSyatem.hotel
 {
-    public partial class frmAddUpdateFacilitie : MaterialForm
+    public partial class frmAddUpdateFacilitie : Form
     {
         public delegate void SendNewFacilite(clsFacilite NewFacilite);
 
@@ -26,24 +24,14 @@ namespace HotelManagmentSyatem.hotel
         public frmAddUpdateFacilitie()
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey900, Accent.LightBlue200, TextShade.WHITE);
+
 
         }
 
         public frmAddUpdateFacilitie(int FacilitieID)
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800,
-                Primary.BlueGrey900,
-                Primary.BlueGrey900,
-                Accent.LightBlue200,
-                TextShade.WHITE);
+
             _UpdateMode = true;
             _FacilitieID = FacilitieID;
             this.Text = "Update Facilitie";
@@ -65,12 +53,10 @@ namespace HotelManagmentSyatem.hotel
                 facilite = clsFacilite.FindFacilitieByID((int)_FacilitieID);
                 if (facilite == null)
                 {
-                    MaterialMessageBox.Show($"facilitie with ID = {_FacilitieID} Not Found",
+                    MessageBox.Show($"facilitie with ID = {_FacilitieID} Not Found",
                    "Error: Wrong ID",
                    MessageBoxButtons.OK,
-                   MessageBoxIcon.Error,
-                   true,
-                   FlexibleMaterialForm.ButtonsPosition.Center);
+                   MessageBoxIcon.Error);
 
                     return;
 
@@ -127,23 +113,19 @@ namespace HotelManagmentSyatem.hotel
         {
             if (!this.ValidateChildren())
             {
-                MaterialMessageBox.Show("Hover On the read icon",
+                MessageBox.Show("Hover On the read icon",
                     "Error: Some Filed not valid",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    true,
-                    FlexibleMaterialForm.ButtonsPosition.Center);
+                    MessageBoxIcon.Error);
                 return;
             }
 
             if (facilite.IconUrl == null)
             {
-                MaterialMessageBox.Show("please select an icon",
+                MessageBox.Show("please select an icon",
                     "Error:Some thing Wrong",
                     MessageBoxButtons.OK,
-                    MessageBoxIcon.Error,
-                    true,
-                    FlexibleMaterialForm.ButtonsPosition.Center);
+                    MessageBoxIcon.Error);
                 return;
             }
 
@@ -151,12 +133,10 @@ namespace HotelManagmentSyatem.hotel
             facilite.IconUrl = clsFileManager.CopyFile(facilite.IconUrl, "C:\\Facilities-Images");
             if (facilite.save())
             {
-                MaterialMessageBox.Show("facilitie save Successfully",
+                MessageBox.Show("facilitie save Successfully",
                   "info: success",
                   MessageBoxButtons.OK,
-                  MessageBoxIcon.Information,
-                  true,
-                  FlexibleMaterialForm.ButtonsPosition.Center);
+                  MessageBoxIcon.Information);
                 lblFacilitieID.Text = facilite.ID.ToString();
 
                 this.Text = "Update Facilitie";
@@ -167,12 +147,10 @@ namespace HotelManagmentSyatem.hotel
                     DataSent?.Invoke(facilite);
             }
             else
-                MaterialMessageBox.Show("facilitie faild",
+                MessageBox.Show("facilitie faild",
                    "Error:Some thing Wrong",
                    MessageBoxButtons.OK,
-                   MessageBoxIcon.Error,
-                   true,
-                   FlexibleMaterialForm.ButtonsPosition.Center);
+                   MessageBoxIcon.Error);
         }
 
         private void btnCancel_Click(object sender, System.EventArgs e)

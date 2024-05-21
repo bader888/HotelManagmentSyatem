@@ -1,5 +1,6 @@
 ﻿using HotelData;
 using System;
+using System.Collections.Generic;
 using System.Data;
 
 namespace HotelLogic
@@ -9,7 +10,19 @@ namespace HotelLogic
         enum enMode { AddNew = 1, Update = 2 }
         enMode Mode = enMode.AddNew;
 
-        enum enReservationStatus
+
+        public static Dictionary<int, string> dicReservationStatus = new Dictionary<int, string>
+        {
+            {1,"Pending" },
+            {2,"Confirmed" },
+            {4,"Completed" },
+            {3,"Cancel" }
+
+        };
+
+
+
+        public enum enReservationStatus
         {
             Pending = 1,
             Confirmed = 2,
@@ -24,6 +37,7 @@ namespace HotelLogic
 
         public int? room_id { set; get; }
 
+        public decimal? reservation_cost { get; set; }
         public DateTime? check_in_date { set; get; }
 
         public DateTime? check_out_date { set; get; }
@@ -59,7 +73,7 @@ namespace HotelLogic
         }
 
         //--Constructure1
-        private clsReservation(int reservationID, int customer_id, int room_id, DateTime check_in_date, DateTime check_out_date, int number_of_nights, string special_request, TimeSpan? arrived_time, byte reservation_status, DateTime reservation_date)
+        private clsReservation(int reservationID, int customer_id, int room_id, DateTime check_in_date, DateTime check_out_date, int number_of_nights, string special_request, TimeSpan? arrived_time, byte reservation_status, DateTime reservation_date, decimal? reservation_cost)
         {
             this.reservationID = reservationID;
             this.customer_id = customer_id;
@@ -71,6 +85,7 @@ namespace HotelLogic
             this.arrived_time = arrived_time;
             this.reservation_status = reservation_status;
             this.reservation_date = reservation_date;
+            this.reservation_cost = reservation_cost;
             this._CustomerInfo = clsCustomer.FindCustomerByID((int)this.customer_id);
             this._RoomInfo = clsRoom.FindRoomByID((int)this.room_id);
             Mode = enMode.Update;
@@ -89,6 +104,7 @@ namespace HotelLogic
             this.arrived_time = null;
             this.reservation_status = null;
             this.reservation_date = null;
+            this.reservation_cost = null;
             Mode = enMode.AddNew;
         }
 
@@ -110,29 +126,42 @@ namespace HotelLogic
              (int)this.number_of_nights,
              (string)this.special_request,
              (TimeSpan)this.arrived_time,
-             (byte)this.reservation_status
+             (byte)this.reservation_status,
+             (decimal)this.reservation_cost
              );
         }
 
         //--ADD  
         private bool _AddNewReservation()
         {
+
+            clsPaymentCard paymentCard = clsPaymentCard.GetPaymentCardDetailsForCurrentCustomer();
+            paymentCard.TotalAmount -= (decimal)this.reservation_cost;
+            paymentCard.Save();
+
             this.reservationID = clsReservationData.AddNewReservation(
              (int)this.customer_id,
              (int)this.room_id,
              (DateTime)this.check_in_date,
              (DateTime)this.check_out_date,
              (int)this.number_of_nights,
-             (string)this.special_request,
-             (TimeSpan)this.arrived_time,
-             (byte)this.reservation_status
-             );
+              this.special_request,
+             this.arrived_time,
+             (byte)clsReservation.enReservationStatus.Pending,
+             (decimal)reservation_cost);
 
             return this.reservationID != -1;
         }
 
         //--FIND 
+        public static DataRow FindReservations(int ReservationsID)
+        {
+            return clsReservationData.FindReservations(ReservationsID);
+        }
+
+
         static public clsReservation FindReservationByID(int ReservationID)
+
         {
             DataTable dtReservation = clsReservationData.FindReservationsByID(ReservationID);
             if (dtReservation.Rows.Count > 0)
@@ -140,18 +169,30 @@ namespace HotelLogic
                 DataRow rowReservation = dtReservation.Rows[0];//get the first row  
 
 
-                return new clsReservation(
-                       (int)rowReservation.Field<int>("reservationID"),
-                            (int)rowReservation["customer_id"],
-                            (int)rowReservation["room_id"],
-                            (DateTime)rowReservation["check_in_date"],
-                            (DateTime)rowReservation["check_out_date"],
-                            (int)rowReservation["number_of_nights"],
-                            rowReservation.Field<string>("special_request"),
-                            rowReservation.Field<TimeSpan>("arrived_time"),
-                            (byte)rowReservation["reservation_status"],
-                            (DateTime)rowReservation["reservation_date"]
-                    );
+                try
+                {
+
+                    return new clsReservation(
+                           (int)rowReservation.Field<int>("reservationID"),
+                           (int)rowReservation["customer_id"],
+                           (int)rowReservation["room_id"],
+                           (DateTime)rowReservation["check_in_date"],
+                           (DateTime)rowReservation["check_out_date"],
+                           (int)rowReservation["number_of_nights"],
+                           rowReservation.Field<string>("special_request"),
+                           rowReservation.Field<TimeSpan?>("arrived_time"),
+                           (byte)rowReservation["reservation_status"],
+                           (DateTime)rowReservation["reservation_date"],
+                           rowReservation.Field<decimal?>("reservation_cost")
+
+                        );
+
+                }
+                catch (Exception ex)
+                {
+                    return null;
+
+                }
             }
             else
                 return null;
@@ -161,6 +202,13 @@ namespace HotelLogic
         public static DataTable GetAllReservation()
         {
             return clsReservationData.GetAllreservations();
+        }
+
+        public static DataTable GetAllReservationForCustomer(int CustomerID)
+        {
+
+            return clsReservationData.GetAllReservationForCustomer(CustomerID);
+
         }
 
         //--IS EXISTS 

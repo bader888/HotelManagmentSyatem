@@ -170,6 +170,45 @@ namespace HotelData
             }
             return dt;
         }
+
+
+
+        public static DataTable FindRoomTypeName(string TypeName)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change the procedure name
+                using (SqlCommand command = new SqlCommand("sp_FindRoomtypeByName", connection))
+                {
+
+                    try
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@TypeName", TypeName);
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        //clsLog.LogMessageError(ex.Message);
+                    }
+
+                }
+            }
+            return dt;
+        }
+
+
     }
+
+
 }
 

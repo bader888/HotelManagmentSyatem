@@ -482,10 +482,9 @@
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.flpImages);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAddEditRoomImages";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAddEditRoomImages";
+            this.Text = "Add Room Images";
             this.Load += new System.EventHandler(this.frmAddEditRoomImages_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

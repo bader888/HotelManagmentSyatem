@@ -1,6 +1,4 @@
-﻿using Bunifu.UI.WinForms.BunifuAnimatorNS;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace HotelManagmentSyatem.Room
 {
@@ -14,11 +12,18 @@ namespace HotelManagmentSyatem.Room
             _RoomID = RoomID;
         }
 
-        async private void frmShowRoomDetails_Load(object sender, System.EventArgs e)
+        private void frmShowRoomDetails_Load(object sender, System.EventArgs e)
         {
-            await Task.Delay(50);
-            bunifuTransition1.ShowSync(ctrlRoomCard1, false, Animation.ScaleAndHorizSlide);
-            ctrlRoomCard1.LoadRoomInfo(_RoomID);
+
+            ctrlRoomCard2.LoadRoomInfo(_RoomID);
+        }
+
+        public void HideBtnFromCustomer()
+        {
+
+            ctrlRoomCard2.BtnAddFacilitiesVisiable = false;
+            ctrlRoomCard2.BtnAddImagesVisiable = false;
+            ctrlRoomCard2.BtnEditRoomInfoVisiable = false;
         }
 
         private void btnCloseForm_Click(object sender, System.EventArgs e)

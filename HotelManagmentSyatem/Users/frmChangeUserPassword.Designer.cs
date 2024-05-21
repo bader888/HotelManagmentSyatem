@@ -47,6 +47,8 @@
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
+            this.btnMin = new Bunifu.UI.WinForms.BunifuPictureBox();
+            this.btnCloseForm = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuCards1 = new Bunifu.Framework.UI.BunifuCards();
             this.btnClose = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnSave = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -60,16 +62,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.ctrlUserCard1 = new HotelManagmentSyatem.Users.Controls.ctrlUserCard();
-            this.btnMin = new Bunifu.UI.WinForms.BunifuPictureBox();
-            this.btnCloseForm = new Bunifu.UI.WinForms.BunifuPictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).BeginInit();
             this.bunifuCards1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).BeginInit();
             this.SuspendLayout();
             // 
             // bunifuElipse1
@@ -100,6 +100,43 @@
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(870, 744);
             this.bunifuPanel1.TabIndex = 0;
+            // 
+            // btnMin
+            // 
+            this.btnMin.AllowFocused = false;
+            this.btnMin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMin.AutoSizeHeight = true;
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.BorderRadius = 14;
+            this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
+            this.btnMin.IsCircle = true;
+            this.btnMin.Location = new System.Drawing.Point(785, 11);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(28, 28);
+            this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMin.TabIndex = 5;
+            this.btnMin.TabStop = false;
+            this.btnMin.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            // 
+            // btnCloseForm
+            // 
+            this.btnCloseForm.AllowFocused = false;
+            this.btnCloseForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCloseForm.AutoSizeHeight = true;
+            this.btnCloseForm.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseForm.BorderRadius = 14;
+            this.btnCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseForm.Image")));
+            this.btnCloseForm.IsCircle = true;
+            this.btnCloseForm.Location = new System.Drawing.Point(821, 11);
+            this.btnCloseForm.Name = "btnCloseForm";
+            this.btnCloseForm.Size = new System.Drawing.Size(28, 28);
+            this.btnCloseForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCloseForm.TabIndex = 4;
+            this.btnCloseForm.TabStop = false;
+            this.btnCloseForm.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
             // bunifuCards1
             // 
@@ -620,43 +657,6 @@
             this.ctrlUserCard1.Size = new System.Drawing.Size(842, 476);
             this.ctrlUserCard1.TabIndex = 2;
             // 
-            // btnMin
-            // 
-            this.btnMin.AllowFocused = false;
-            this.btnMin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMin.AutoSizeHeight = true;
-            this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BorderRadius = 14;
-            this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
-            this.btnMin.IsCircle = true;
-            this.btnMin.Location = new System.Drawing.Point(785, 11);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(28, 28);
-            this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMin.TabIndex = 5;
-            this.btnMin.TabStop = false;
-            this.btnMin.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
-            // 
-            // btnCloseForm
-            // 
-            this.btnCloseForm.AllowFocused = false;
-            this.btnCloseForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCloseForm.AutoSizeHeight = true;
-            this.btnCloseForm.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseForm.BorderRadius = 14;
-            this.btnCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCloseForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseForm.Image")));
-            this.btnCloseForm.IsCircle = true;
-            this.btnCloseForm.Location = new System.Drawing.Point(821, 11);
-            this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCloseForm.TabIndex = 4;
-            this.btnCloseForm.TabStop = false;
-            this.btnCloseForm.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
-            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
-            // 
             // frmChangeUserPassword
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -667,17 +667,17 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmChangeUserPassword";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmChangeUserPassword";
+            this.Text = "Change User Password";
             this.Load += new System.EventHandler(this.frmChangeUserPassword_Load);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).EndInit();
             this.bunifuCards1.ResumeLayout(false);
             this.bunifuCards1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -1,10 +1,9 @@
 ﻿using HotelLogic;
-using MaterialSkin;
-using MaterialSkin.Controls;
+using System.Windows.Forms;
 
 namespace HotelManagmentSyatem.Hotel_Facilities
 {
-    public partial class frmFacilitieDetails : MaterialForm
+    public partial class frmFacilitieDetails : Form
     {
 
         int? _FacilitieID = null;
@@ -12,10 +11,6 @@ namespace HotelManagmentSyatem.Hotel_Facilities
         public frmFacilitieDetails(int FacilitieID)
         {
             InitializeComponent();
-            var materialSkinManager = MaterialSkinManager.Instance;
-            materialSkinManager.AddFormToManage(this);
-            materialSkinManager.Theme = MaterialSkinManager.Themes.LIGHT;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey900, Accent.LightBlue200, TextShade.WHITE);
 
             _FacilitieID = FacilitieID;
         }

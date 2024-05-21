@@ -1,5 +1,4 @@
 ﻿using HotelLogic;
-using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -23,7 +22,7 @@ namespace HotelManagmentSyatem.Room
         private void deleteRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int RoomID = (int)dgvRooms.CurrentRow.Cells[0].Value;
-            if (MaterialMessageBox.Show("Are you sure you want to delete Room [" + dgvRooms.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.YesNo,
+            if (MessageBox.Show("Are you sure you want to delete Room [" + dgvRooms.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //Perform Delele and refresh
@@ -137,6 +136,14 @@ namespace HotelManagmentSyatem.Room
             frmAddEditRoomInfo frm = new frmAddEditRoomInfo();
             frm.ShowDialog();
 
+
+        }
+
+        private void bunifuImageButton1_Click(object sender, EventArgs e)
+        {
+
+            frmAddEditRoomInfo frm = new frmAddEditRoomInfo();
+            frm.ShowDialog();
 
         }
     }

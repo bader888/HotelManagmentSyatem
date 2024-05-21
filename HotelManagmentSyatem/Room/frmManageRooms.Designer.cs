@@ -78,6 +78,7 @@
             this.bunifuShapes7 = new Bunifu.UI.WinForms.BunifuShapes();
             this.bunifuShapes8 = new Bunifu.UI.WinForms.BunifuShapes();
             this.bunifuSnackbar1 = new Bunifu.UI.WinForms.BunifuSnackbar(this.components);
+            this.bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
             this.bunifuShadowPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRooms)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
@@ -469,27 +470,27 @@
             this.toolStripMenuItem2,
             this.addNewRoomToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(197, 190);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(193, 168);
             // 
             // showRoomDetailsToolStripMenuItem
             // 
             this.showRoomDetailsToolStripMenuItem.Image = global::HotelManagmentSyatem.Properties.Resources._11475630;
             this.showRoomDetailsToolStripMenuItem.Name = "showRoomDetailsToolStripMenuItem";
-            this.showRoomDetailsToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.showRoomDetailsToolStripMenuItem.Size = new System.Drawing.Size(192, 38);
             this.showRoomDetailsToolStripMenuItem.Text = "Show Room Details";
             this.showRoomDetailsToolStripMenuItem.Click += new System.EventHandler(this.showRoomDetailsToolStripMenuItem_Click);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(189, 6);
             // 
             // deleteRoomToolStripMenuItem
             // 
             this.deleteRoomToolStripMenuItem.Image = global::HotelManagmentSyatem.Properties.Resources.Delete_32;
             this.deleteRoomToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.deleteRoomToolStripMenuItem.Name = "deleteRoomToolStripMenuItem";
-            this.deleteRoomToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.deleteRoomToolStripMenuItem.Size = new System.Drawing.Size(192, 38);
             this.deleteRoomToolStripMenuItem.Text = "Delete Room";
             this.deleteRoomToolStripMenuItem.Click += new System.EventHandler(this.deleteRoomToolStripMenuItem_Click);
             // 
@@ -498,20 +499,20 @@
             this.updateRoomInfoToolStripMenuItem.Image = global::HotelManagmentSyatem.Properties.Resources.edit_32;
             this.updateRoomInfoToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.updateRoomInfoToolStripMenuItem.Name = "updateRoomInfoToolStripMenuItem";
-            this.updateRoomInfoToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.updateRoomInfoToolStripMenuItem.Size = new System.Drawing.Size(192, 38);
             this.updateRoomInfoToolStripMenuItem.Text = "Update Room Info.";
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(193, 6);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(189, 6);
             // 
             // addNewRoomToolStripMenuItem
             // 
             this.addNewRoomToolStripMenuItem.Image = global::HotelManagmentSyatem.Properties.Resources.Address_32;
             this.addNewRoomToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.addNewRoomToolStripMenuItem.Name = "addNewRoomToolStripMenuItem";
-            this.addNewRoomToolStripMenuItem.Size = new System.Drawing.Size(196, 38);
+            this.addNewRoomToolStripMenuItem.Size = new System.Drawing.Size(192, 38);
             this.addNewRoomToolStripMenuItem.Text = "Add New Room";
             this.addNewRoomToolStripMenuItem.Click += new System.EventHandler(this.addNewRoomToolStripMenuItem_Click);
             // 
@@ -855,20 +856,55 @@
             this.bunifuSnackbar1.WarningOptions.IconLeftMargin = 12;
             this.bunifuSnackbar1.ZoomCloseIcon = true;
             // 
+            // bunifuImageButton1
+            // 
+            this.bunifuImageButton1.ActiveImage = null;
+            this.bunifuImageButton1.AllowAnimations = true;
+            this.bunifuImageButton1.AllowBuffering = false;
+            this.bunifuImageButton1.AllowToggling = false;
+            this.bunifuImageButton1.AllowZooming = true;
+            this.bunifuImageButton1.AllowZoomingOnFocus = false;
+            this.bunifuImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuImageButton1.DialogResult = System.Windows.Forms.DialogResult.None;
+            this.bunifuImageButton1.ErrorImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.ErrorImage")));
+            this.bunifuImageButton1.FadeWhenInactive = false;
+            this.bunifuImageButton1.Flip = Bunifu.UI.WinForms.BunifuImageButton.FlipOrientation.Normal;
+            this.bunifuImageButton1.Image = global::HotelManagmentSyatem.Properties.Resources.add;
+            this.bunifuImageButton1.ImageActive = null;
+            this.bunifuImageButton1.ImageLocation = null;
+            this.bunifuImageButton1.ImageMargin = 15;
+            this.bunifuImageButton1.ImageSize = new System.Drawing.Size(35, 35);
+            this.bunifuImageButton1.ImageZoomSize = new System.Drawing.Size(50, 50);
+            this.bunifuImageButton1.InitialImage = ((System.Drawing.Image)(resources.GetObject("bunifuImageButton1.InitialImage")));
+            this.bunifuImageButton1.Location = new System.Drawing.Point(245, 3);
+            this.bunifuImageButton1.Name = "bunifuImageButton1";
+            this.bunifuImageButton1.Rotation = 0;
+            this.bunifuImageButton1.ShowActiveImage = true;
+            this.bunifuImageButton1.ShowCursorChanges = true;
+            this.bunifuImageButton1.ShowImageBorders = true;
+            this.bunifuImageButton1.ShowSizeMarkers = false;
+            this.bunifuImageButton1.Size = new System.Drawing.Size(50, 50);
+            this.bunifuImageButton1.TabIndex = 125;
+            this.bunifuImageButton1.ToolTipText = "";
+            this.bunifuImageButton1.WaitOnLoad = false;
+            this.bunifuImageButton1.Zoom = 15;
+            this.bunifuImageButton1.ZoomSpeed = 10;
+            this.bunifuImageButton1.Click += new System.EventHandler(this.bunifuImageButton1_Click);
+            // 
             // frmManageRooms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.ClientSize = new System.Drawing.Size(1252, 589);
+            this.Controls.Add(this.bunifuImageButton1);
             this.Controls.Add(this.btnCloseForm);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.bunifuShadowPanel2);
             this.Controls.Add(this.bunifuPanel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmManageRooms";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmManageRooms";
+            this.Text = "Manage Rooms";
             this.Load += new System.EventHandler(this.frmManageRooms_Load_1);
             this.bunifuShadowPanel2.ResumeLayout(false);
             this.bunifuShadowPanel2.PerformLayout();
@@ -925,5 +961,6 @@
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel3;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel6;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
     }
 }

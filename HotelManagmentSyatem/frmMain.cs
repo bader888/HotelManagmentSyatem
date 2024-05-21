@@ -1,6 +1,7 @@
 ﻿using HotelManagmentSyatem.Hotel_Facilities;
 using HotelManagmentSyatem.Log_in;
 using HotelManagmentSyatem.People;
+using HotelManagmentSyatem.Reservation;
 using HotelManagmentSyatem.Room;
 using HotelManagmentSyatem.Room_Type;
 using HotelManagmentSyatem.Users;
@@ -52,6 +53,13 @@ namespace HotelManagmentSyatem
         private void bunifuButton4_Click(object sender, System.EventArgs e)
         {
             frmManageRoomTypes frm = new frmManageRoomTypes();
+            frm.ShowDialog();
+
+        }
+
+        private void bunifuButton6_Click(object sender, System.EventArgs e)
+        {
+            frmManageReservations frm = new frmManageReservations();
             frm.ShowDialog();
 
         }

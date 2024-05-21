@@ -215,6 +215,40 @@ namespace HotelData
             return dt;
         }
 
+        public static DataTable FindCustomer(string Email, string Password)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change the procedure name
+                using (SqlCommand command = new SqlCommand("sp_FindCustomerByEmailAndPassword", connection))
+                {
+
+                    try
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@Email", Email);
+                        command.Parameters.AddWithValue("@Password", Password);
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                        //clsLog.LogMessageError(ex.Message);
+                    }
+
+                }
+            }
+            return dt;
+        }
+
         public static bool CustomerLogin(string Email, string Passwodrd)
         {
             bool isFound = true;
@@ -249,6 +283,7 @@ namespace HotelData
             }
 
         }
+
 
     }
 }

@@ -1,6 +1,5 @@
 ﻿using Bunifu.UI.WinForms;
 using HotelLogic;
-using MaterialSkin.Controls;
 using System;
 using System.Windows.Forms;
 
@@ -38,11 +37,13 @@ namespace HotelManagmentSyatem.Room_Type
             if (_Mode == enMode.AddNew)
             {
                 lblHeader.Text = "Add New Room Type";
+                this.Text = "Add New Room Type";
                 _RoomType = new clsRoomType();
             }
             else
             {
                 lblHeader.Text = "Update Room type";
+                this.Text = "Update Room type";
             }
 
             txtTypeName.Text = string.Empty;
@@ -56,7 +57,7 @@ namespace HotelManagmentSyatem.Room_Type
 
             if (_RoomType == null)
             {
-                MaterialMessageBox.Show("No Room Type with ID = " + _RoomTypeID, "Room Type Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No Room Type with ID = " + _RoomTypeID, "Room Type Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
                 return;
             }
@@ -116,7 +117,9 @@ namespace HotelManagmentSyatem.Room_Type
                 //change form mode to update.
                 _Mode = enMode.Update;
                 lblHeader.Text = "Update Room Type";
-                bunifuSnackbar1.Show(this, "Data Saved Successfully.", BunifuSnackbar.MessageTypes.Information);
+                this.Text = "Update Room type";
+
+                bunifuSnackbar1.Show(this, "Data Saved Successfully.", BunifuSnackbar.MessageTypes.Success);
 
                 //Trigger the event to send data back to the caller form.
                 DataBack?.Invoke(this, (int)_RoomType.type_id);

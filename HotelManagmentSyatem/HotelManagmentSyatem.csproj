@@ -152,9 +152,6 @@
     <Reference Include="Bunifu.UI.WinForms.Deprecated, Version=4.1.1.0, Culture=neutral, PublicKeyToken=e8e24ccd28363fe9, processorArchitecture=MSIL">
       <HintPath>..\packages\Bunifu.UI.WinForms.5.0.3\lib\Bunifu.UI.WinForms.Deprecated.dll</HintPath>
     </Reference>
-    <Reference Include="MaterialSkin, Version=2.3.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\MaterialSkin.2.2.3.1\lib\net461\MaterialSkin.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
@@ -171,18 +168,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Customers\Controls\ctrlAddNewCustomer.cs">
+    <Compile Include="Customer\Controls\ctrlAddNewCustomer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Customers\Controls\ctrlAddNewCustomer.Designer.cs">
+    <Compile Include="Customer\Controls\ctrlAddNewCustomer.Designer.cs">
       <DependentUpon>ctrlAddNewCustomer.cs</DependentUpon>
     </Compile>
-    <Compile Include="Customers\frmAddEditNewCustomer.cs">
+    <Compile Include="Customer\frmAddEditNewCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Customers\frmAddEditNewCustomer.Designer.cs">
+    <Compile Include="Customer\frmAddEditNewCustomer.Designer.cs">
       <DependentUpon>frmAddEditNewCustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="Customer\frmChangeCustomerPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmChangeCustomerPassword.Designer.cs">
+      <DependentUpon>frmChangeCustomerPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customer\frmShowCustomerInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customer\frmShowCustomerInfo.Designer.cs">
+      <DependentUpon>frmShowCustomerInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Global Classes\clsCurrentCustomer.cs" />
     <Compile Include="Global Classes\clsFiles.cs" />
     <Compile Include="Reservation\Controls\ctrlBookingRoomCard.cs">
       <SubType>UserControl</SubType>
@@ -190,17 +200,77 @@
     <Compile Include="Reservation\Controls\ctrlBookingRoomCard.Designer.cs">
       <DependentUpon>ctrlBookingRoomCard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reservation\Controls\ctrlCustomerBookingRoomCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reservation\Controls\ctrlCustomerBookingRoomCard.Designer.cs">
+      <DependentUpon>ctrlCustomerBookingRoomCard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reservation\Controls\ctrlFilterItem.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Reservation\Controls\ctrlFilterItem.Designer.cs">
       <DependentUpon>ctrlFilterItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reservation\frmCustomersMain.cs">
+    <Compile Include="Reservation\Controls\ctrlPaymentDetailsCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reservation\Controls\ctrlPaymentDetailsCard.Designer.cs">
+      <DependentUpon>ctrlPaymentDetailsCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\Controls\ctrlReservationCArd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reservation\Controls\ctrlReservationCArd.Designer.cs">
+      <DependentUpon>ctrlReservationCArd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\Customer Personal  Details\frmCustomerBookingAndTrip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Reservation\frmCustomersMain.Designer.cs">
-      <DependentUpon>frmCustomersMain.cs</DependentUpon>
+    <Compile Include="Reservation\Customer Personal  Details\frmCustomerBookingAndTrip.Designer.cs">
+      <DependentUpon>frmCustomerBookingAndTrip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\frmCustomerMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservation\frmCustomerMain.Designer.cs">
+      <DependentUpon>frmCustomerMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\Customer Personal  Details\frmPaymentDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservation\Customer Personal  Details\frmPaymentDetails.Designer.cs">
+      <DependentUpon>frmPaymentDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\frmManageReservations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservation\frmManageReservations.Designer.cs">
+      <DependentUpon>frmManageReservations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\frmPaymentForBookingRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservation\frmPaymentForBookingRoom.Designer.cs">
+      <DependentUpon>frmPaymentForBookingRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\frmShowReservationDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reservation\frmShowReservationDetails.Designer.cs">
+      <DependentUpon>frmShowReservationDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\Messages\ctrlAllMessages.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reservation\Messages\ctrlAllMessages.Designer.cs">
+      <DependentUpon>ctrlAllMessages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reservation\Messages\ctrlMessage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Reservation\Messages\ctrlMessage.Designer.cs">
+      <DependentUpon>ctrlMessage.cs</DependentUpon>
     </Compile>
     <Compile Include="Room Facilities\frmFacilitieDetails.cs">
       <SubType>Form</SubType>
@@ -225,12 +295,6 @@
     <Compile Include="Global Classes\clsLog.cs" />
     <Compile Include="Global Classes\clsUtil.cs" />
     <Compile Include="Global Classes\clsValidation.cs" />
-    <Compile Include="hotel\frmAddNewHotel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="hotel\frmAddNewHotel.Designer.cs">
-      <DependentUpon>frmAddNewHotel.cs</DependentUpon>
-    </Compile>
     <Compile Include="Room Facilities\frmAddUpdateFacilitie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,34 +307,34 @@
     <Compile Include="Log in\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\Controls\ctrlPersonCard.cs">
+    <Compile Include="Person\Controls\ctrlPersonCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\Controls\ctrlPersonCard.Designer.cs">
+    <Compile Include="Person\Controls\ctrlPersonCard.Designer.cs">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\Controls\ctrlPersonCardWithFilter.cs">
+    <Compile Include="Person\Controls\ctrlPersonCardWithFilter.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="People\Controls\ctrlPersonCardWithFilter.Designer.cs">
+    <Compile Include="Person\Controls\ctrlPersonCardWithFilter.Designer.cs">
       <DependentUpon>ctrlPersonCardWithFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmAddEditPerson.cs">
+    <Compile Include="Person\frmAddEditPerson.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmAddEditPerson.Designer.cs">
+    <Compile Include="Person\frmAddEditPerson.Designer.cs">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmManagePeople.cs">
+    <Compile Include="Person\frmManagePeople.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmManagePeople.Designer.cs">
+    <Compile Include="Person\frmManagePeople.Designer.cs">
       <DependentUpon>frmManagePeople.cs</DependentUpon>
     </Compile>
-    <Compile Include="People\frmPersonDetails.cs">
+    <Compile Include="Person\frmPersonDetails.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="People\frmPersonDetails.Designer.cs">
+    <Compile Include="Person\frmPersonDetails.Designer.cs">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -347,6 +411,18 @@
     <Compile Include="Room\frmShowRoomDetails.Designer.cs">
       <DependentUpon>frmShowRoomDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Room\Room Rate\frmCustomerRateRoom.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Room\Room Rate\frmCustomerRateRoom.Designer.cs">
+      <DependentUpon>frmCustomerRateRoom.cs</DependentUpon>
+    </Compile>
+    <Compile Include="User Reservation\frmReservationByUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User Reservation\frmReservationByUsers.Designer.cs">
+      <DependentUpon>frmReservationByUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\Controls\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -377,20 +453,56 @@
     <Compile Include="Users\frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Customers\Controls\ctrlAddNewCustomer.resx">
+    <EmbeddedResource Include="Customer\Controls\ctrlAddNewCustomer.resx">
       <DependentUpon>ctrlAddNewCustomer.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Customers\frmAddEditNewCustomer.resx">
+    <EmbeddedResource Include="Customer\frmAddEditNewCustomer.resx">
       <DependentUpon>frmAddEditNewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmChangeCustomerPassword.resx">
+      <DependentUpon>frmChangeCustomerPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customer\frmShowCustomerInfo.resx">
+      <DependentUpon>frmShowCustomerInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reservation\Controls\ctrlBookingRoomCard.resx">
       <DependentUpon>ctrlBookingRoomCard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\Controls\ctrlCustomerBookingRoomCard.resx">
+      <DependentUpon>ctrlCustomerBookingRoomCard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reservation\Controls\ctrlFilterItem.resx">
       <DependentUpon>ctrlFilterItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Reservation\frmCustomersMain.resx">
-      <DependentUpon>frmCustomersMain.cs</DependentUpon>
+    <EmbeddedResource Include="Reservation\Controls\ctrlPaymentDetailsCard.resx">
+      <DependentUpon>ctrlPaymentDetailsCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\Controls\ctrlReservationCArd.resx">
+      <DependentUpon>ctrlReservationCArd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\Customer Personal  Details\frmCustomerBookingAndTrip.resx">
+      <DependentUpon>frmCustomerBookingAndTrip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\frmCustomerMain.resx">
+      <DependentUpon>frmCustomerMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\Customer Personal  Details\frmPaymentDetails.resx">
+      <DependentUpon>frmPaymentDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\frmManageReservations.resx">
+      <DependentUpon>frmManageReservations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\frmPaymentForBookingRoom.resx">
+      <DependentUpon>frmPaymentForBookingRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\frmShowReservationDetails.resx">
+      <DependentUpon>frmShowReservationDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\Messages\ctrlAllMessages.resx">
+      <DependentUpon>ctrlAllMessages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reservation\Messages\ctrlMessage.resx">
+      <DependentUpon>ctrlMessage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Room Facilities\frmFacilitieDetails.resx">
       <DependentUpon>frmFacilitieDetails.cs</DependentUpon>
@@ -401,28 +513,25 @@
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="hotel\frmAddNewHotel.resx">
-      <DependentUpon>frmAddNewHotel.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Room Facilities\frmAddUpdateFacilitie.resx">
       <DependentUpon>frmAddUpdateFacilitie.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Log in\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\Controls\ctrlPersonCard.resx">
+    <EmbeddedResource Include="Person\Controls\ctrlPersonCard.resx">
       <DependentUpon>ctrlPersonCard.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\Controls\ctrlPersonCardWithFilter.resx">
+    <EmbeddedResource Include="Person\Controls\ctrlPersonCardWithFilter.resx">
       <DependentUpon>ctrlPersonCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmAddEditPerson.resx">
+    <EmbeddedResource Include="Person\frmAddEditPerson.resx">
       <DependentUpon>frmAddEditPerson.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmManagePeople.resx">
+    <EmbeddedResource Include="Person\frmManagePeople.resx">
       <DependentUpon>frmManagePeople.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="People\frmPersonDetails.resx">
+    <EmbeddedResource Include="Person\frmPersonDetails.resx">
       <DependentUpon>frmPersonDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -471,6 +580,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Room\frmShowRoomDetails.resx">
       <DependentUpon>frmShowRoomDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Room\Room Rate\frmCustomerRateRoom.resx">
+      <DependentUpon>frmCustomerRateRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="User Reservation\frmReservationByUsers.resx">
+      <DependentUpon>frmReservationByUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users\Controls\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
@@ -1002,5 +1117,33 @@
   <ItemGroup>
     <None Include="Resources\userFaceFemale.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cardNumber.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dots.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CancelBooking.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CancelBooking1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\time.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\43367_letter_mail_request_scroll_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RateRoom.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>

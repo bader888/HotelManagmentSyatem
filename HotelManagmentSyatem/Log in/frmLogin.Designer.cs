@@ -72,19 +72,19 @@
             this.txtCustomerPassword = new Bunifu.UI.WinForms.BunifuTextBox();
             this.bunifuLabel2 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnSignIn = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
-            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
+            this.btnMin = new Bunifu.UI.WinForms.BunifuPictureBox();
+            this.btnCloseForm = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuCheckBox1 = new Bunifu.UI.WinForms.BunifuCheckBox();
             this.bunifuShadowPanel1 = new Bunifu.UI.WinForms.BunifuShadowPanel();
+            this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnMin = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.btnSignInCustomer = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.txtCustomerEmail = new Bunifu.UI.WinForms.BunifuTextBox();
-            this.btnCloseForm = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuPanel1 = new Bunifu.UI.WinForms.BunifuPanel();
             this.bunifuPages1 = new Bunifu.UI.WinForms.BunifuPages();
             this.tpQuestion = new System.Windows.Forms.TabPage();
+            this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuLabel5 = new Bunifu.UI.WinForms.BunifuLabel();
             this.btnUser = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnCustomer = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
@@ -92,14 +92,14 @@
             this.tpcustomerLogin = new System.Windows.Forms.TabPage();
             this.btnSignUp = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.tpUserLogin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
-            this.bunifuShadowPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).BeginInit();
+            this.bunifuShadowPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.bunifuPanel1.SuspendLayout();
             this.bunifuPages1.SuspendLayout();
             this.tpQuestion.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
             this.tpcustomerLogin.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -217,7 +217,7 @@
             this.bunifuLabel3.AutoEllipsis = false;
             this.bunifuLabel3.CursorType = null;
             this.bunifuLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel3.Location = new System.Drawing.Point(295, 217);
+            this.bunifuLabel3.Location = new System.Drawing.Point(111, 267);
             this.bunifuLabel3.Name = "bunifuLabel3";
             this.bunifuLabel3.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.bunifuLabel3.Size = new System.Drawing.Size(78, 15);
@@ -314,6 +314,7 @@
             this.bunifuButton1.TextMarginLeft = 0;
             this.bunifuButton1.TextPadding = new System.Windows.Forms.Padding(0);
             this.bunifuButton1.UseDefaultRadiusAndThickness = true;
+            this.bunifuButton1.Click += new System.EventHandler(this.btnSignInUser_Click);
             // 
             // ckbRememberUser
             // 
@@ -333,7 +334,7 @@
             this.ckbRememberUser.CheckState = Bunifu.UI.WinForms.BunifuCheckBox.CheckStates.Checked;
             this.ckbRememberUser.Cursor = System.Windows.Forms.Cursors.Default;
             this.ckbRememberUser.CustomCheckmarkImage = null;
-            this.ckbRememberUser.Location = new System.Drawing.Point(268, 214);
+            this.ckbRememberUser.Location = new System.Drawing.Point(84, 264);
             this.ckbRememberUser.MinimumSize = new System.Drawing.Size(17, 17);
             this.ckbRememberUser.Name = "ckbRememberUser";
             this.ckbRememberUser.OnCheck.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -367,7 +368,6 @@
             this.ckbRememberUser.TabIndex = 24;
             this.ckbRememberUser.ThreeState = false;
             this.ckbRememberUser.ToolTipText = null;
-            this.ckbRememberUser.CheckedChanged += new System.EventHandler<Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs>(this.ckbRememberUser_CheckedChanged);
             // 
             // btnSingInUser
             // 
@@ -532,7 +532,6 @@
             this.txtUserName.TextPlaceholder = "User Name";
             this.txtUserName.UseSystemPasswordChar = false;
             this.txtUserName.WordWrap = true;
-            this.txtUserName.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyText);
             // 
             // tpUserLogin
             // 
@@ -625,7 +624,7 @@
             this.txtPassword.TextPlaceholder = "Password";
             this.txtPassword.UseSystemPasswordChar = false;
             this.txtPassword.WordWrap = true;
-            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.ValidateEmptyText);
+            this.txtPassword.OnIconLeftClick += new System.EventHandler(this.ShowHidePassword_OnIconLeftClick);
             // 
             // llSignUp
             // 
@@ -829,7 +828,7 @@
             this.txtCustomerPassword.ShortcutsEnabled = true;
             this.txtCustomerPassword.Size = new System.Drawing.Size(310, 37);
             this.txtCustomerPassword.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCustomerPassword.TabIndex = 27;
+            this.txtCustomerPassword.TabIndex = 1;
             this.txtCustomerPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCustomerPassword.TextMarginBottom = 0;
             this.txtCustomerPassword.TextMarginLeft = 3;
@@ -837,6 +836,7 @@
             this.txtCustomerPassword.TextPlaceholder = "Password";
             this.txtCustomerPassword.UseSystemPasswordChar = false;
             this.txtCustomerPassword.WordWrap = true;
+            this.txtCustomerPassword.OnIconLeftClick += new System.EventHandler(this.ShowHidePassword_OnIconLeftClick);
             // 
             // bunifuLabel2
             // 
@@ -941,27 +941,44 @@
             this.btnSignIn.TextMarginLeft = 0;
             this.btnSignIn.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnSignIn.UseDefaultRadiusAndThickness = true;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignInCustomer_Click);
             // 
-            // bunifuPictureBox1
+            // btnMin
             // 
-            this.bunifuPictureBox1.AllowFocused = false;
-            this.bunifuPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.bunifuPictureBox1.AutoSizeHeight = true;
-            this.bunifuPictureBox1.BorderRadius = 0;
-            this.bunifuPictureBox1.Image = global::HotelManagmentSyatem.Properties.Resources.UserFace;
-            this.bunifuPictureBox1.IsCircle = true;
-            this.bunifuPictureBox1.Location = new System.Drawing.Point(157, 105);
-            this.bunifuPictureBox1.Name = "bunifuPictureBox1";
-            this.bunifuPictureBox1.Size = new System.Drawing.Size(162, 162);
-            this.bunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.bunifuPictureBox1.TabIndex = 4;
-            this.bunifuPictureBox1.TabStop = false;
-            this.bunifuPictureBox1.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
+            this.btnMin.AllowFocused = false;
+            this.btnMin.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMin.AutoSizeHeight = true;
+            this.btnMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnMin.BorderRadius = 14;
+            this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
+            this.btnMin.IsCircle = true;
+            this.btnMin.Location = new System.Drawing.Point(482, 32);
+            this.btnMin.Name = "btnMin";
+            this.btnMin.Size = new System.Drawing.Size(28, 28);
+            this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMin.TabIndex = 167;
+            this.btnMin.TabStop = false;
+            this.btnMin.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             // 
-            // bunifuElipse1
+            // btnCloseForm
             // 
-            this.bunifuElipse1.ElipseRadius = 10;
-            this.bunifuElipse1.TargetControl = this;
+            this.btnCloseForm.AllowFocused = false;
+            this.btnCloseForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnCloseForm.AutoSizeHeight = true;
+            this.btnCloseForm.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseForm.BorderRadius = 14;
+            this.btnCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCloseForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseForm.Image")));
+            this.btnCloseForm.IsCircle = true;
+            this.btnCloseForm.Location = new System.Drawing.Point(516, 32);
+            this.btnCloseForm.Name = "btnCloseForm";
+            this.btnCloseForm.Size = new System.Drawing.Size(28, 28);
+            this.btnCloseForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnCloseForm.TabIndex = 166;
+            this.btnCloseForm.TabStop = false;
+            this.btnCloseForm.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
+            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
             // bunifuCheckBox1
             // 
@@ -1039,27 +1056,14 @@
             this.bunifuShadowPanel1.Style = Bunifu.UI.WinForms.BunifuShadowPanel.BevelStyles.Flat;
             this.bunifuShadowPanel1.TabIndex = 23;
             // 
+            // bunifuElipse1
+            // 
+            this.bunifuElipse1.ElipseRadius = 5;
+            this.bunifuElipse1.TargetControl = this;
+            // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
-            // 
-            // btnMin
-            // 
-            this.btnMin.AllowFocused = false;
-            this.btnMin.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnMin.AutoSizeHeight = true;
-            this.btnMin.BackColor = System.Drawing.Color.Transparent;
-            this.btnMin.BorderRadius = 14;
-            this.btnMin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMin.Image = ((System.Drawing.Image)(resources.GetObject("btnMin.Image")));
-            this.btnMin.IsCircle = true;
-            this.btnMin.Location = new System.Drawing.Point(482, 32);
-            this.btnMin.Name = "btnMin";
-            this.btnMin.Size = new System.Drawing.Size(28, 28);
-            this.btnMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMin.TabIndex = 164;
-            this.btnMin.TabStop = false;
-            this.btnMin.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
             // 
             // btnSignInCustomer
             // 
@@ -1229,7 +1233,7 @@
             this.txtCustomerEmail.ShortcutsEnabled = true;
             this.txtCustomerEmail.Size = new System.Drawing.Size(310, 37);
             this.txtCustomerEmail.Style = Bunifu.UI.WinForms.BunifuTextBox._Style.Bunifu;
-            this.txtCustomerEmail.TabIndex = 18;
+            this.txtCustomerEmail.TabIndex = 0;
             this.txtCustomerEmail.TextAlign = System.Windows.Forms.HorizontalAlignment.Left;
             this.txtCustomerEmail.TextMarginBottom = 0;
             this.txtCustomerEmail.TextMarginLeft = 3;
@@ -1238,25 +1242,6 @@
             this.txtCustomerEmail.UseSystemPasswordChar = false;
             this.txtCustomerEmail.WordWrap = true;
             this.txtCustomerEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtCustomerEmail_Validating);
-            // 
-            // btnCloseForm
-            // 
-            this.btnCloseForm.AllowFocused = false;
-            this.btnCloseForm.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.btnCloseForm.AutoSizeHeight = true;
-            this.btnCloseForm.BackColor = System.Drawing.Color.Transparent;
-            this.btnCloseForm.BorderRadius = 14;
-            this.btnCloseForm.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCloseForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseForm.Image")));
-            this.btnCloseForm.IsCircle = true;
-            this.btnCloseForm.Location = new System.Drawing.Point(516, 32);
-            this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(28, 28);
-            this.btnCloseForm.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnCloseForm.TabIndex = 163;
-            this.btnCloseForm.TabStop = false;
-            this.btnCloseForm.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Circle;
-            this.btnCloseForm.Click += new System.EventHandler(this.btnCloseForm_Click);
             // 
             // bunifuPanel1
             // 
@@ -1271,7 +1256,7 @@
             this.bunifuPanel1.Name = "bunifuPanel1";
             this.bunifuPanel1.ShowBorders = true;
             this.bunifuPanel1.Size = new System.Drawing.Size(492, 522);
-            this.bunifuPanel1.TabIndex = 162;
+            this.bunifuPanel1.TabIndex = 165;
             // 
             // bunifuPages1
             // 
@@ -1322,6 +1307,22 @@
             this.tpQuestion.TabIndex = 0;
             this.tpQuestion.Text = "Question";
             this.tpQuestion.UseVisualStyleBackColor = true;
+            // 
+            // bunifuPictureBox1
+            // 
+            this.bunifuPictureBox1.AllowFocused = false;
+            this.bunifuPictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.bunifuPictureBox1.AutoSizeHeight = true;
+            this.bunifuPictureBox1.BorderRadius = 0;
+            this.bunifuPictureBox1.Image = global::HotelManagmentSyatem.Properties.Resources.UserFace;
+            this.bunifuPictureBox1.IsCircle = true;
+            this.bunifuPictureBox1.Location = new System.Drawing.Point(157, 105);
+            this.bunifuPictureBox1.Name = "bunifuPictureBox1";
+            this.bunifuPictureBox1.Size = new System.Drawing.Size(162, 162);
+            this.bunifuPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.bunifuPictureBox1.TabIndex = 4;
+            this.bunifuPictureBox1.TabStop = false;
+            this.bunifuPictureBox1.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
             // 
             // bunifuLabel5
             // 
@@ -1649,7 +1650,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(596, 622);
             this.Controls.Add(this.btnMin);
             this.Controls.Add(this.btnCloseForm);
@@ -1657,20 +1658,20 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmLogin";
+            this.Text = "Log in";
             this.Load += new System.EventHandler(this.frmLogin_Load);
             this.tpUserLogin.ResumeLayout(false);
             this.tpUserLogin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).EndInit();
             this.bunifuShadowPanel1.ResumeLayout(false);
             this.bunifuShadowPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMin)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCloseForm)).EndInit();
             this.bunifuPanel1.ResumeLayout(false);
             this.bunifuPages1.ResumeLayout(false);
             this.tpQuestion.ResumeLayout(false);
             this.tpQuestion.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).EndInit();
             this.tpcustomerLogin.ResumeLayout(false);
             this.tpcustomerLogin.PerformLayout();
             this.ResumeLayout(false);
@@ -1695,20 +1696,20 @@
         private Bunifu.UI.WinForms.BunifuTextBox txtCustomerPassword;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel2;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSignIn;
-        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.UI.WinForms.BunifuPictureBox btnMin;
         private Bunifu.UI.WinForms.BunifuPictureBox btnCloseForm;
+        private Bunifu.UI.WinForms.BunifuCheckBox bunifuCheckBox1;
+        private Bunifu.UI.WinForms.BunifuShadowPanel bunifuShadowPanel1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
         private Bunifu.UI.WinForms.BunifuPages bunifuPages1;
         private System.Windows.Forms.TabPage tpQuestion;
+        private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel5;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnUser;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnCustomer;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel4;
         private System.Windows.Forms.TabPage tpcustomerLogin;
-        private Bunifu.UI.WinForms.BunifuCheckBox bunifuCheckBox1;
-        private Bunifu.UI.WinForms.BunifuShadowPanel bunifuShadowPanel1;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnSignInCustomer;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private Bunifu.UI.WinForms.BunifuTextBox txtCustomerEmail;

@@ -26,6 +26,30 @@ namespace HotelManagmentSyatem.Room.controls
             InitializeComponent();
         }
 
+        public bool BtnAddImagesVisiable
+        {
+            set
+            {
+                btnAddNewRoomImage.Visible = value;
+            }
+        }
+
+        public bool BtnEditRoomInfoVisiable
+        {
+            set
+            {
+                btnEditRoomInfo.Visible = value;
+            }
+        }
+
+        public bool BtnAddFacilitiesVisiable
+        {
+            set
+            {
+                btnAddNewRoomFacilities.Visible = value;
+            }
+        }
+
         public void ResetRoomInfo()
         {
             _RoomID = -1;

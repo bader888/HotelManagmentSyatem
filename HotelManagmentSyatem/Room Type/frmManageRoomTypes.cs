@@ -1,5 +1,4 @@
 ﻿using HotelLogic;
-using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -45,7 +44,7 @@ namespace HotelManagmentSyatem.Room_Type
         private void deleteRoomToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            if (MaterialMessageBox.Show("Are you sure you want to delete Room Type [" + dgvRoomTypes.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.YesNo,
+            if (MessageBox.Show("Are you sure you want to delete Room Type [" + dgvRoomTypes.CurrentRow.Cells[0].Value + "]", "Confirm Delete", MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 //Perform Delele and refresh

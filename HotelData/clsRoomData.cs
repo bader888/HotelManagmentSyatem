@@ -142,6 +142,39 @@ namespace HotelData
 
         }
 
+
+        public static DataTable GetAvailableRooms()
+        {
+            DataTable dt = new DataTable();
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                //change the procedure name
+                using (SqlCommand command = new SqlCommand("sp_GetAvailableRooms", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+
+                    try
+                    {
+                        connection.Open();
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.HasRows)
+                            {
+                                dt.Load(reader);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                }
+            }
+            return dt;
+
+        }
+
         public static bool DeleteRoom(int RoomID)
         {
             int RowsEffected = 0;
@@ -261,5 +294,40 @@ namespace HotelData
             }
             return dt;
         }
+
+
+        public static DataTable FindByRoomNumber(int RoomNumber)
+        {
+            DataTable dt = new DataTable();
+
+            using (SqlConnection connection = new SqlConnection(clsConnectionString.ConnectionString))
+            {
+                using (SqlCommand command = new SqlCommand("sp_FindRoomByRoomNumber", connection))
+                {
+
+                    try
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.Parameters.AddWithValue("@RoomNumber", RoomNumber);
+
+                        connection.Open();
+
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
+
+                }
+            }
+            return dt;
+        }
+
+
+
     }
 }

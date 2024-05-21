@@ -17,20 +17,29 @@ namespace HotelLogic
             AddNew,
             Update
         }
-
         enMode Mode = enMode.AddNew;
 
-        //--Constructure1
+        clsPerson _personInfo = new clsPerson();
+        public clsPerson PersonInfo
+        {
+            get
+            {
+                return _personInfo;
+            }
+        }
+
+        //-- Constructure1
         private clsCustomer(int CustomerID, int PersonID, string Email, string Password)
         {
             this.CustomerID = CustomerID;
             this.PersonID = PersonID;
             this.Email = Email;
             this.Password = Password;
+            _personInfo = clsPerson.FindPersonByID((int)this.PersonID);
             Mode = enMode.Update;
         }
 
-        //--Constructure2
+        //-- Constructure2
         public clsCustomer()
         {
             this.CustomerID = null;
@@ -58,9 +67,8 @@ namespace HotelLogic
             return clsCustomerData.UpdateCustomer(
             (int)this.CustomerID,
             (int)this.PersonID,
-            (string)this.Email,
-            (string)this.Password
-            );
+            this.Email,
+            this.Password);
         }
 
         public bool Save()
@@ -106,16 +114,30 @@ namespace HotelLogic
 
                 return new clsCustomer(
                        (int)rowCustomer["CustomerID"],
-                            (int)rowCustomer["PersonID"],
-                            (string)rowCustomer["Email"],
-                            (string)rowCustomer["Password"]
-                    );
+                       (int)rowCustomer["PersonID"],
+                       (string)rowCustomer["Email"],
+                       (string)rowCustomer["Password"]);
             }
             else
                 return null;
         }
 
+        static public clsCustomer FindCustomer(string Email, string Password)
+        {
+            DataTable dtCustomer = clsCustomerData.FindCustomer(Email, Password);
+            if (dtCustomer.Rows.Count > 0)
+            {
+                DataRow rowCustomer = dtCustomer.Rows[0];//get the first row  
 
+                return new clsCustomer(
+                       (int)rowCustomer["CustomerID"],
+                       (int)rowCustomer["PersonID"],
+                       (string)rowCustomer["Email"],
+                       (string)rowCustomer["Password"]);
+            }
+            else
+                return null;
+        }
         static public bool CustomerLogin(string Email, string Password)
         {
             return clsCustomerData.CustomerLogin(Email, Password);

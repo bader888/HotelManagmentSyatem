@@ -1,10 +1,8 @@
 ﻿using HotelLogic;
 using HotelManagmentSyatem.Global_Classes;
 using HotelManagmentSyatem.Properties;
-using MaterialSkin.Controls;
 using System;
 using System.ComponentModel;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace HotelManagmentSyatem.Users
@@ -20,6 +18,7 @@ namespace HotelManagmentSyatem.Users
         public frmAddEditeUser()
         {
             InitializeComponent();
+
 
         }
 
@@ -55,7 +54,7 @@ namespace HotelManagmentSyatem.Users
             txtUserName.Text = "";
             txtPassword.Text = "";
             txtConfirmPassword.Text = "";
-            chkIsActive.Checked = true;
+            //    chkIsActive.Checked = true;
         }
 
         private void btnPersonInfo_Click(object sender, EventArgs e)
@@ -81,7 +80,7 @@ namespace HotelManagmentSyatem.Users
                 if (clsUser.isUserExistForPersonID(ctrlPersonCardWithFilter1.PersonID))
                 {
 
-                    MaterialMessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Selected Person already has a user, choose another one.", "Select another Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     ctrlPersonCardWithFilter1.FilterFocus();
                 }
 
@@ -96,7 +95,7 @@ namespace HotelManagmentSyatem.Users
             else
 
             {
-                MaterialMessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Please Select a Person", "Select a Person", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ctrlPersonCardWithFilter1.FilterFocus();
 
             }
@@ -119,7 +118,7 @@ namespace HotelManagmentSyatem.Users
 
             if (_User == null)
             {
-                MaterialMessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("No User with ID = " + _User, "User Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 this.Close();
 
                 return;
@@ -130,7 +129,7 @@ namespace HotelManagmentSyatem.Users
             txtUserName.Text = _User.UserName;
             txtPassword.Text = _User.Password;
             txtConfirmPassword.Text = _User.Password;
-            chkIsActive.Checked = (bool)_User.IsActive;
+            // chkIsActive.Checked = (bool)_User.IsActive;
             ctrlPersonCardWithFilter1.LoadPersonInfo((int)_User.PersonID);
 
 
@@ -140,10 +139,10 @@ namespace HotelManagmentSyatem.Users
         {
             foreach (var Role in clsUser.UserRoleMapping)
             {
-                cbUserRole.Items.Add(Role);
+                //              cbUserRole.Items.Add(Role);
             }
 
-            cbUserRole.SelectedIndex = 0;
+            //            cbUserRole.SelectedIndex = 0;
         }
 
         private void frmAddEditeUser_Load(object sender, EventArgs e)
@@ -164,7 +163,7 @@ namespace HotelManagmentSyatem.Users
             if (!this.ValidateChildren())
             {
                 //Here we dont continue becuase the form is not valid
-                MaterialMessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
+                MessageBox.Show("Some fileds are not valide!, put the mouse over the red icon(s) to see the erro",
                     "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
 
@@ -173,10 +172,10 @@ namespace HotelManagmentSyatem.Users
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             _User.UserName = txtUserName.Text.Trim();
             _User.Password = clsEncrypted.HashPassword(txtPassword.Text.Trim());
-            _User.IsActive = chkIsActive.Checked;
+            //      _User.IsActive = chkIsActive.Checked;
 
             //////this will be get from the combo box 
-            _User.Role = (byte)clsUser.UserRoleMapping.FirstOrDefault(role => role.Value == cbUserRole.SelectedItem.ToString()).Key;
+            //  _User.Role = (byte)clsUser.UserRoleMapping.FirstOrDefault(role => role.Value == cbUserRole.SelectedItem.ToString()).Key;
 
 
             if (_User.Save())
@@ -187,11 +186,11 @@ namespace HotelManagmentSyatem.Users
                 _Mode = enMode.Update;
                 lblHeader.Text = "Update User";
                 this.Text = "Update User";
-
-                MaterialMessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                bunifuSnackbar1.Show(this, "Data Saved Successfully.", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Success);
             }
             else
-                MaterialMessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                bunifuSnackbar1.Show(this, "Error: Data Is not Saved Successfully.", Bunifu.UI.WinForms.BunifuSnackbar.MessageTypes.Error);
+
         }
 
         private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)

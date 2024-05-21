@@ -31,10 +31,11 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ctrlBookingRoomCard));
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges1 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             this.bunifuPanel9 = new Bunifu.UI.WinForms.BunifuPanel();
-            this.lblBedNumber = new Bunifu.UI.WinForms.BunifuLabel();
             this.llSeeMoreDetails = new System.Windows.Forms.LinkLabel();
             this.btnBooking = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.roomRating = new Bunifu.UI.WinForms.BunifuRating();
+            this.picRoomImage = new Bunifu.UI.WinForms.BunifuPictureBox();
+            this.lblBedNumber = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel36 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblisPetsFriendly = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel38 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -46,7 +47,6 @@
             this.bunifuLabel44 = new Bunifu.UI.WinForms.BunifuLabel();
             this.lblRoomNumber = new Bunifu.UI.WinForms.BunifuLabel();
             this.bunifuLabel46 = new Bunifu.UI.WinForms.BunifuLabel();
-            this.picRoomImage = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picRoomImage)).BeginInit();
             this.SuspendLayout();
@@ -60,9 +60,6 @@
             this.bunifuPanel9.BorderRadius = 10;
             this.bunifuPanel9.BorderThickness = 1;
             this.bunifuPanel9.Controls.Add(this.lblBedNumber);
-            this.bunifuPanel9.Controls.Add(this.llSeeMoreDetails);
-            this.bunifuPanel9.Controls.Add(this.btnBooking);
-            this.bunifuPanel9.Controls.Add(this.roomRating);
             this.bunifuPanel9.Controls.Add(this.bunifuLabel36);
             this.bunifuPanel9.Controls.Add(this.lblisPetsFriendly);
             this.bunifuPanel9.Controls.Add(this.bunifuLabel38);
@@ -74,27 +71,15 @@
             this.bunifuPanel9.Controls.Add(this.bunifuLabel44);
             this.bunifuPanel9.Controls.Add(this.lblRoomNumber);
             this.bunifuPanel9.Controls.Add(this.bunifuLabel46);
+            this.bunifuPanel9.Controls.Add(this.llSeeMoreDetails);
+            this.bunifuPanel9.Controls.Add(this.btnBooking);
+            this.bunifuPanel9.Controls.Add(this.roomRating);
             this.bunifuPanel9.Controls.Add(this.picRoomImage);
             this.bunifuPanel9.Location = new System.Drawing.Point(3, 3);
             this.bunifuPanel9.Name = "bunifuPanel9";
             this.bunifuPanel9.ShowBorders = true;
             this.bunifuPanel9.Size = new System.Drawing.Size(307, 220);
             this.bunifuPanel9.TabIndex = 21;
-            // 
-            // lblBedNumber
-            // 
-            this.lblBedNumber.AllowParentOverrides = false;
-            this.lblBedNumber.AutoEllipsis = false;
-            this.lblBedNumber.CursorType = null;
-            this.lblBedNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblBedNumber.Location = new System.Drawing.Point(82, 107);
-            this.lblBedNumber.Name = "lblBedNumber";
-            this.lblBedNumber.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblBedNumber.Size = new System.Drawing.Size(15, 15);
-            this.lblBedNumber.TabIndex = 14;
-            this.lblBedNumber.Text = "???";
-            this.lblBedNumber.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblBedNumber.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // llSeeMoreDetails
             // 
@@ -106,6 +91,7 @@
             this.llSeeMoreDetails.TabIndex = 13;
             this.llSeeMoreDetails.TabStop = true;
             this.llSeeMoreDetails.Text = "See more details";
+            this.llSeeMoreDetails.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.llSeeMoreDetails_LinkClicked);
             // 
             // btnBooking
             // 
@@ -195,6 +181,7 @@
             this.btnBooking.TextMarginLeft = 0;
             this.btnBooking.TextPadding = new System.Windows.Forms.Padding(0);
             this.btnBooking.UseDefaultRadiusAndThickness = true;
+            this.btnBooking.Click += new System.EventHandler(this.btnBooking_Click);
             // 
             // roomRating
             // 
@@ -218,171 +205,6 @@
             this.roomRating.Text = "bunifuRating4";
             this.roomRating.Value = 0;
             // 
-            // bunifuLabel36
-            // 
-            this.bunifuLabel36.AllowParentOverrides = false;
-            this.bunifuLabel36.AutoEllipsis = false;
-            this.bunifuLabel36.CursorType = null;
-            this.bunifuLabel36.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel36.Location = new System.Drawing.Point(7, 149);
-            this.bunifuLabel36.Name = "bunifuLabel36";
-            this.bunifuLabel36.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel36.Size = new System.Drawing.Size(74, 15);
-            this.bunifuLabel36.TabIndex = 11;
-            this.bunifuLabel36.Text = "is pet friendly:";
-            this.bunifuLabel36.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel36.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lblisPetsFriendly
-            // 
-            this.lblisPetsFriendly.AllowParentOverrides = false;
-            this.lblisPetsFriendly.AutoEllipsis = false;
-            this.lblisPetsFriendly.CursorType = null;
-            this.lblisPetsFriendly.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblisPetsFriendly.Location = new System.Drawing.Point(89, 149);
-            this.lblisPetsFriendly.Name = "lblisPetsFriendly";
-            this.lblisPetsFriendly.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblisPetsFriendly.Size = new System.Drawing.Size(15, 15);
-            this.lblisPetsFriendly.TabIndex = 10;
-            this.lblisPetsFriendly.Text = "???";
-            this.lblisPetsFriendly.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblisPetsFriendly.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel38
-            // 
-            this.bunifuLabel38.AllowParentOverrides = false;
-            this.bunifuLabel38.AutoEllipsis = false;
-            this.bunifuLabel38.CursorType = null;
-            this.bunifuLabel38.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel38.Location = new System.Drawing.Point(8, 128);
-            this.bunifuLabel38.Name = "bunifuLabel38";
-            this.bunifuLabel38.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel38.Size = new System.Drawing.Size(96, 15);
-            this.bunifuLabel38.TabIndex = 9;
-            this.bunifuLabel38.Text = "Smoking Allowed:";
-            this.bunifuLabel38.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel38.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lblSmokingAllowed
-            // 
-            this.lblSmokingAllowed.AllowParentOverrides = false;
-            this.lblSmokingAllowed.AutoEllipsis = false;
-            this.lblSmokingAllowed.CursorType = null;
-            this.lblSmokingAllowed.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblSmokingAllowed.Location = new System.Drawing.Point(110, 128);
-            this.lblSmokingAllowed.Name = "lblSmokingAllowed";
-            this.lblSmokingAllowed.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblSmokingAllowed.Size = new System.Drawing.Size(15, 15);
-            this.lblSmokingAllowed.TabIndex = 8;
-            this.lblSmokingAllowed.Text = "???";
-            this.lblSmokingAllowed.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblSmokingAllowed.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel40
-            // 
-            this.bunifuLabel40.AllowParentOverrides = false;
-            this.bunifuLabel40.AutoEllipsis = false;
-            this.bunifuLabel40.CursorType = null;
-            this.bunifuLabel40.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel40.Location = new System.Drawing.Point(8, 107);
-            this.bunifuLabel40.Name = "bunifuLabel40";
-            this.bunifuLabel40.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel40.Size = new System.Drawing.Size(68, 15);
-            this.bunifuLabel40.TabIndex = 7;
-            this.bunifuLabel40.Text = "bed number:";
-            this.bunifuLabel40.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel40.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lblPrice
-            // 
-            this.lblPrice.AllowParentOverrides = false;
-            this.lblPrice.AutoEllipsis = false;
-            this.lblPrice.CursorType = null;
-            this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblPrice.Location = new System.Drawing.Point(95, 86);
-            this.lblPrice.Name = "lblPrice";
-            this.lblPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblPrice.Size = new System.Drawing.Size(15, 15);
-            this.lblPrice.TabIndex = 6;
-            this.lblPrice.Text = "???";
-            this.lblPrice.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblPrice.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel42
-            // 
-            this.bunifuLabel42.AllowParentOverrides = false;
-            this.bunifuLabel42.AutoEllipsis = false;
-            this.bunifuLabel42.CursorType = null;
-            this.bunifuLabel42.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel42.Location = new System.Drawing.Point(7, 86);
-            this.bunifuLabel42.Name = "bunifuLabel42";
-            this.bunifuLabel42.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel42.Size = new System.Drawing.Size(82, 15);
-            this.bunifuLabel42.TabIndex = 5;
-            this.bunifuLabel42.Text = "Price per Night:";
-            this.bunifuLabel42.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel42.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lblRoomType
-            // 
-            this.lblRoomType.AllowParentOverrides = false;
-            this.lblRoomType.AutoEllipsis = false;
-            this.lblRoomType.CursorType = null;
-            this.lblRoomType.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblRoomType.Location = new System.Drawing.Point(42, 65);
-            this.lblRoomType.Name = "lblRoomType";
-            this.lblRoomType.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblRoomType.Size = new System.Drawing.Size(15, 15);
-            this.lblRoomType.TabIndex = 4;
-            this.lblRoomType.Text = "???";
-            this.lblRoomType.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblRoomType.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel44
-            // 
-            this.bunifuLabel44.AllowParentOverrides = false;
-            this.bunifuLabel44.AutoEllipsis = false;
-            this.bunifuLabel44.CursorType = null;
-            this.bunifuLabel44.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel44.Location = new System.Drawing.Point(8, 65);
-            this.bunifuLabel44.Name = "bunifuLabel44";
-            this.bunifuLabel44.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel44.Size = new System.Drawing.Size(28, 15);
-            this.bunifuLabel44.TabIndex = 3;
-            this.bunifuLabel44.Text = "Type:";
-            this.bunifuLabel44.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel44.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // lblRoomNumber
-            // 
-            this.lblRoomNumber.AllowParentOverrides = false;
-            this.lblRoomNumber.AutoEllipsis = false;
-            this.lblRoomNumber.CursorType = null;
-            this.lblRoomNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblRoomNumber.Location = new System.Drawing.Point(99, 44);
-            this.lblRoomNumber.Name = "lblRoomNumber";
-            this.lblRoomNumber.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.lblRoomNumber.Size = new System.Drawing.Size(15, 15);
-            this.lblRoomNumber.TabIndex = 2;
-            this.lblRoomNumber.Text = "???";
-            this.lblRoomNumber.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.lblRoomNumber.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
-            // bunifuLabel46
-            // 
-            this.bunifuLabel46.AllowParentOverrides = false;
-            this.bunifuLabel46.AutoEllipsis = false;
-            this.bunifuLabel46.CursorType = null;
-            this.bunifuLabel46.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.bunifuLabel46.Location = new System.Drawing.Point(7, 44);
-            this.bunifuLabel46.Name = "bunifuLabel46";
-            this.bunifuLabel46.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.bunifuLabel46.Size = new System.Drawing.Size(82, 15);
-            this.bunifuLabel46.TabIndex = 1;
-            this.bunifuLabel46.Text = "Room Number:";
-            this.bunifuLabel46.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
-            this.bunifuLabel46.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
-            // 
             // picRoomImage
             // 
             this.picRoomImage.AllowFocused = false;
@@ -398,6 +220,186 @@
             this.picRoomImage.TabIndex = 0;
             this.picRoomImage.TabStop = false;
             this.picRoomImage.Type = Bunifu.UI.WinForms.BunifuPictureBox.Types.Square;
+            // 
+            // lblBedNumber
+            // 
+            this.lblBedNumber.AllowParentOverrides = false;
+            this.lblBedNumber.AutoEllipsis = false;
+            this.lblBedNumber.CursorType = null;
+            this.lblBedNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblBedNumber.Location = new System.Drawing.Point(85, 113);
+            this.lblBedNumber.Name = "lblBedNumber";
+            this.lblBedNumber.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblBedNumber.Size = new System.Drawing.Size(15, 15);
+            this.lblBedNumber.TabIndex = 26;
+            this.lblBedNumber.Text = "???";
+            this.lblBedNumber.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblBedNumber.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel36
+            // 
+            this.bunifuLabel36.AllowParentOverrides = false;
+            this.bunifuLabel36.AutoEllipsis = false;
+            this.bunifuLabel36.CursorType = null;
+            this.bunifuLabel36.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel36.Location = new System.Drawing.Point(10, 155);
+            this.bunifuLabel36.Name = "bunifuLabel36";
+            this.bunifuLabel36.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel36.Size = new System.Drawing.Size(74, 15);
+            this.bunifuLabel36.TabIndex = 25;
+            this.bunifuLabel36.Text = "is pet friendly:";
+            this.bunifuLabel36.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel36.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblisPetsFriendly
+            // 
+            this.lblisPetsFriendly.AllowParentOverrides = false;
+            this.lblisPetsFriendly.AutoEllipsis = false;
+            this.lblisPetsFriendly.CursorType = null;
+            this.lblisPetsFriendly.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblisPetsFriendly.Location = new System.Drawing.Point(92, 155);
+            this.lblisPetsFriendly.Name = "lblisPetsFriendly";
+            this.lblisPetsFriendly.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblisPetsFriendly.Size = new System.Drawing.Size(15, 15);
+            this.lblisPetsFriendly.TabIndex = 24;
+            this.lblisPetsFriendly.Text = "???";
+            this.lblisPetsFriendly.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblisPetsFriendly.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel38
+            // 
+            this.bunifuLabel38.AllowParentOverrides = false;
+            this.bunifuLabel38.AutoEllipsis = false;
+            this.bunifuLabel38.CursorType = null;
+            this.bunifuLabel38.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel38.Location = new System.Drawing.Point(11, 134);
+            this.bunifuLabel38.Name = "bunifuLabel38";
+            this.bunifuLabel38.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel38.Size = new System.Drawing.Size(96, 15);
+            this.bunifuLabel38.TabIndex = 23;
+            this.bunifuLabel38.Text = "Smoking Allowed:";
+            this.bunifuLabel38.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel38.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblSmokingAllowed
+            // 
+            this.lblSmokingAllowed.AllowParentOverrides = false;
+            this.lblSmokingAllowed.AutoEllipsis = false;
+            this.lblSmokingAllowed.CursorType = null;
+            this.lblSmokingAllowed.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSmokingAllowed.Location = new System.Drawing.Point(113, 134);
+            this.lblSmokingAllowed.Name = "lblSmokingAllowed";
+            this.lblSmokingAllowed.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblSmokingAllowed.Size = new System.Drawing.Size(15, 15);
+            this.lblSmokingAllowed.TabIndex = 22;
+            this.lblSmokingAllowed.Text = "???";
+            this.lblSmokingAllowed.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblSmokingAllowed.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel40
+            // 
+            this.bunifuLabel40.AllowParentOverrides = false;
+            this.bunifuLabel40.AutoEllipsis = false;
+            this.bunifuLabel40.CursorType = null;
+            this.bunifuLabel40.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel40.Location = new System.Drawing.Point(11, 113);
+            this.bunifuLabel40.Name = "bunifuLabel40";
+            this.bunifuLabel40.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel40.Size = new System.Drawing.Size(68, 15);
+            this.bunifuLabel40.TabIndex = 21;
+            this.bunifuLabel40.Text = "bed number:";
+            this.bunifuLabel40.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel40.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblPrice
+            // 
+            this.lblPrice.AllowParentOverrides = false;
+            this.lblPrice.AutoEllipsis = false;
+            this.lblPrice.CursorType = null;
+            this.lblPrice.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblPrice.Location = new System.Drawing.Point(98, 92);
+            this.lblPrice.Name = "lblPrice";
+            this.lblPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblPrice.Size = new System.Drawing.Size(15, 15);
+            this.lblPrice.TabIndex = 20;
+            this.lblPrice.Text = "???";
+            this.lblPrice.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblPrice.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel42
+            // 
+            this.bunifuLabel42.AllowParentOverrides = false;
+            this.bunifuLabel42.AutoEllipsis = false;
+            this.bunifuLabel42.CursorType = null;
+            this.bunifuLabel42.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel42.Location = new System.Drawing.Point(10, 92);
+            this.bunifuLabel42.Name = "bunifuLabel42";
+            this.bunifuLabel42.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel42.Size = new System.Drawing.Size(82, 15);
+            this.bunifuLabel42.TabIndex = 19;
+            this.bunifuLabel42.Text = "Price per Night:";
+            this.bunifuLabel42.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel42.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblRoomType
+            // 
+            this.lblRoomType.AllowParentOverrides = false;
+            this.lblRoomType.AutoEllipsis = false;
+            this.lblRoomType.CursorType = null;
+            this.lblRoomType.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblRoomType.Location = new System.Drawing.Point(45, 71);
+            this.lblRoomType.Name = "lblRoomType";
+            this.lblRoomType.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblRoomType.Size = new System.Drawing.Size(15, 15);
+            this.lblRoomType.TabIndex = 18;
+            this.lblRoomType.Text = "???";
+            this.lblRoomType.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblRoomType.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel44
+            // 
+            this.bunifuLabel44.AllowParentOverrides = false;
+            this.bunifuLabel44.AutoEllipsis = false;
+            this.bunifuLabel44.CursorType = null;
+            this.bunifuLabel44.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel44.Location = new System.Drawing.Point(11, 71);
+            this.bunifuLabel44.Name = "bunifuLabel44";
+            this.bunifuLabel44.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel44.Size = new System.Drawing.Size(28, 15);
+            this.bunifuLabel44.TabIndex = 17;
+            this.bunifuLabel44.Text = "Type:";
+            this.bunifuLabel44.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel44.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // lblRoomNumber
+            // 
+            this.lblRoomNumber.AllowParentOverrides = false;
+            this.lblRoomNumber.AutoEllipsis = false;
+            this.lblRoomNumber.CursorType = null;
+            this.lblRoomNumber.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblRoomNumber.Location = new System.Drawing.Point(102, 50);
+            this.lblRoomNumber.Name = "lblRoomNumber";
+            this.lblRoomNumber.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.lblRoomNumber.Size = new System.Drawing.Size(15, 15);
+            this.lblRoomNumber.TabIndex = 16;
+            this.lblRoomNumber.Text = "???";
+            this.lblRoomNumber.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.lblRoomNumber.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
+            // 
+            // bunifuLabel46
+            // 
+            this.bunifuLabel46.AllowParentOverrides = false;
+            this.bunifuLabel46.AutoEllipsis = false;
+            this.bunifuLabel46.CursorType = null;
+            this.bunifuLabel46.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.bunifuLabel46.Location = new System.Drawing.Point(10, 50);
+            this.bunifuLabel46.Name = "bunifuLabel46";
+            this.bunifuLabel46.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.bunifuLabel46.Size = new System.Drawing.Size(82, 15);
+            this.bunifuLabel46.TabIndex = 15;
+            this.bunifuLabel46.Text = "Room Number:";
+            this.bunifuLabel46.TextAlignment = System.Drawing.ContentAlignment.TopLeft;
+            this.bunifuLabel46.TextFormat = Bunifu.UI.WinForms.BunifuLabel.TextFormattingOptions.Default;
             // 
             // ctrlBookingRoomCard
             // 
@@ -416,10 +418,11 @@
         #endregion
 
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel9;
-        private Bunifu.UI.WinForms.BunifuLabel lblBedNumber;
         private System.Windows.Forms.LinkLabel llSeeMoreDetails;
         private Bunifu.UI.WinForms.BunifuButton.BunifuButton btnBooking;
         private Bunifu.UI.WinForms.BunifuRating roomRating;
+        private Bunifu.UI.WinForms.BunifuPictureBox picRoomImage;
+        private Bunifu.UI.WinForms.BunifuLabel lblBedNumber;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel36;
         private Bunifu.UI.WinForms.BunifuLabel lblisPetsFriendly;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel38;
@@ -431,6 +434,5 @@
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel44;
         private Bunifu.UI.WinForms.BunifuLabel lblRoomNumber;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel46;
-        private Bunifu.UI.WinForms.BunifuPictureBox picRoomImage;
     }
 }

@@ -105,5 +105,22 @@ namespace HotelLogic
                 return null;
         }
 
+        static public clsRoomType FindRoomTypeByName(string Name)
+        {
+            DataTable dtRoomType = clsRoomTypeData.FindRoomTypeName(Name);
+            if (dtRoomType.Rows.Count > 0)
+            {
+                DataRow rowRoomType = dtRoomType.Rows[0];//get the first row  
+
+                return new clsRoomType(
+                       (int)rowRoomType["type_id"],
+                            (string)rowRoomType["type_name"],
+                            (decimal)rowRoomType["cost_per_night"]
+                    );
+            }
+            else
+                return null;
+        }
+
     }
 }

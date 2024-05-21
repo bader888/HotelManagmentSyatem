@@ -9,5 +9,22 @@ namespace HotelManagmentSyatem.Global_Classes
 
             return Dt1.ToString("dd/MMM/yyyy");
         }
+        public static string DateToFullDetailsWithOutTime(DateTime date)
+        {
+            // Format the date as "ddd/dd/MMMM/yyyy"
+            return date.ToString("ddd, dd, MMMM, yyyy");
+
+
+        }
+
+        public static string DateCustomFormate(DateTime date, string Formate)
+        {
+            // Format the date as "ddd/dd/MMMM/yyyy"
+            return date.ToString(Formate);
+
+
+        }
+
+
     }
 }

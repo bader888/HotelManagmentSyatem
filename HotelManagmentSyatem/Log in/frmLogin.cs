@@ -2,8 +2,8 @@
 using HotelLogic;
 using HotelManagmentSyatem.Customers;
 using HotelManagmentSyatem.Global_Classes;
-using HotelManagmentSyatem.People;
 using HotelManagmentSyatem.Properties;
+using HotelManagmentSyatem.Reservation;
 using System;
 using System.Windows.Forms;
 
@@ -55,13 +55,8 @@ namespace HotelManagmentSyatem.Log_in
             txtCustomerPassword.UseSystemPasswordChar = true;
         }
 
-        private void btnSignUp_Click(object sender, EventArgs e)
-        {
-            frmAddEditPerson frm = new frmAddEditPerson();
-            frm.ShowDialog();
 
-        }
-
+        //move to customer page
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             bunifuPages1.SelectedIndex = 1;
@@ -69,6 +64,7 @@ namespace HotelManagmentSyatem.Log_in
             txtUserName.Text = string.Empty;
         }
 
+        //move to user page
         private void btnUser_Click(object sender, EventArgs e)
         {
             bunifuPages1.SelectedIndex = 2;
@@ -76,6 +72,7 @@ namespace HotelManagmentSyatem.Log_in
             txtCustomerPassword.Text = string.Empty;
         }
 
+        //move to main page
         private void btnPrev_Click(object sender, EventArgs e)
         {
             bunifuPages1.SelectedIndex = 0;
@@ -85,10 +82,6 @@ namespace HotelManagmentSyatem.Log_in
             txtCustomerPassword.Text = string.Empty;
         }
 
-        private void btnCloseForm_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
 
         private void ShowHidePassword_OnIconLeftClick(object sender, EventArgs e)
         {
@@ -126,6 +119,7 @@ namespace HotelManagmentSyatem.Log_in
 
         }
 
+        //sign in user
         private void btnSignInUser_Click(object sender, EventArgs e)
         {
             if (clsUser.UserLogin(txtUserName.Text.Trim(), clsEncrypted.HashPassword(txtPassword.Text.Trim())))
@@ -142,6 +136,7 @@ namespace HotelManagmentSyatem.Log_in
                     clsUtil.RemoveCurrentUserFromRegistry();
                 }
                 this.Hide();
+
                 FrmMain frm = new FrmMain(this);
                 frm.ShowDialog();
             }
@@ -164,20 +159,8 @@ namespace HotelManagmentSyatem.Log_in
             }
         }
 
-        private void btnSignUp_Click_1(object sender, EventArgs e)
-        {
-            frmAddEditNewCustomer frm = new frmAddEditNewCustomer();
-            frm.ShowDialog();
-            //add new customer form
-        }
 
-        private void llSignUp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            frmAddEditNewCustomer frm = new frmAddEditNewCustomer();
-            frm.ShowDialog();
-            //add new customer form
-        }
-
+        //customer sign in
         private void btnSignInCustomer_Click(object sender, EventArgs e)
         {
             if (clsCustomer.CustomerLogin(txtCustomerEmail.Text.Trim(), clsEncrypted.HashPassword(txtCustomerPassword.Text.Trim())))
@@ -186,7 +169,10 @@ namespace HotelManagmentSyatem.Log_in
                 if (ckbRememberUser.Checked)
                 {
                     //save the user name, password, isUser to the register
-                    clsUtil.WriteCurrentUserToRegistry(txtCustomerEmail.Text.Trim(), txtCustomerPassword.Text.Trim(), "Customer");
+                    clsUtil.WriteCurrentUserToRegistry(
+                        txtCustomerEmail.Text.Trim(),
+                        txtCustomerPassword.Text.Trim(),
+                        "Customer");
                 }
                 else
                 {
@@ -194,9 +180,12 @@ namespace HotelManagmentSyatem.Log_in
                     clsUtil.RemoveCurrentUserFromRegistry();
                 }
 
-                MessageBox.Show("Done");
-                //open page to make the customer book a hotel
+                clsCurrentCustomer.customerInfo = clsCustomer.FindCustomer(txtCustomerEmail.Text.Trim(), clsEncrypted.HashPassword(txtCustomerPassword.Text.Trim()));
 
+                // open page to make the customer book a hotel
+                frmCustomerMain frm = new frmCustomerMain(clsCurrentCustomer.customerInfo);
+
+                frm.ShowDialog();
 
             }
             else
@@ -204,9 +193,9 @@ namespace HotelManagmentSyatem.Log_in
 
                 _logInTryCustomer++;
                 lblCustomerWrongLogin.Visible = true;
-                lblCustomerWrongLogin.Text = $"Wrong password/Email, {(2 - _logInTry)} try left!";
+                lblCustomerWrongLogin.Text = $"Wrong password/Email, {(2 - _logInTryCustomer)} try left!";
 
-                if (_logInTry == 2)
+                if (_logInTryCustomer == 2)
                 {
 
                     txtPassword.Enabled = false;
@@ -245,9 +234,20 @@ namespace HotelManagmentSyatem.Log_in
 
         }
 
-        private void ckbRememberUser_CheckedChanged(object sender, Bunifu.UI.WinForms.BunifuCheckBox.CheckedChangedEventArgs e)
+        private void btnSignUp_Click(object sender, EventArgs e)
         {
+            frmAddEditNewCustomer frm = new frmAddEditNewCustomer();
+            frm.ShowDialog();
 
         }
+
+
+        //close the form 
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+
     }
 }

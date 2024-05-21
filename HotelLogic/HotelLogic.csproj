@@ -45,11 +45,14 @@
     <Compile Include="clsCustomer.cs" />
     <Compile Include="clsFacilite.cs" />
     <Compile Include="clsHotel.cs" />
+    <Compile Include="clsMessage.cs" />
+    <Compile Include="clsPaymentCard.cs" />
     <Compile Include="clsPerson.cs" />
     <Compile Include="clsReservation.cs" />
     <Compile Include="clsRoom.cs" />
     <Compile Include="clsRoomFacility.cs" />
     <Compile Include="clsRoomImages.cs" />
+    <Compile Include="clsRoomRate.cs" />
     <Compile Include="clsRoomType.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsUserLogin.cs" />

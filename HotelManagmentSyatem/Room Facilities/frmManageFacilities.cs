@@ -12,6 +12,7 @@ namespace HotelManagmentSyatem.Hotel_Facilities
         {
             InitializeComponent();
         }
+
         DataTable _dtFacilities = new DataTable();
 
         private void frmManageFacilities_Load(object sender, System.EventArgs e)

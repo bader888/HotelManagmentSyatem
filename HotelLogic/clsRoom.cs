@@ -1,4 +1,5 @@
 ﻿using HotelData;
+using System;
 using System.Collections.Generic;
 using System.Data;
 
@@ -19,6 +20,15 @@ namespace HotelLogic
         public byte? room_view { set; get; }
         public int? room_number { set; get; }
         public int? number_of_beds { set; get; }
+
+        private clsRoomType _RoomType = new clsRoomType();
+        public clsRoomType RoomTypeInfo
+        {
+            get
+            {
+                return _RoomType;
+            }
+        }
 
         static public Dictionary<int, string> RoomView = new Dictionary<int, string>
         {
@@ -102,6 +112,7 @@ namespace HotelLogic
             this.room_view = room_view;
             this.room_number = room_number;
             this.number_of_beds = number_of_beds;
+            _RoomType = clsRoomType.FindRoomTypeByID((int)this.room_type_id);
             Mode = enMode.Update;
         }
 
@@ -214,10 +225,84 @@ namespace HotelLogic
                 return null;
         }
 
+        static public clsRoom FindbyRoomNumber(int RoomNumber)
+        {
+            DataTable dtRoom = clsRoomData.FindByRoomNumber(RoomNumber);
+            if (dtRoom.Rows.Count > 0)
+            {
+                DataRow row = dtRoom.Rows[0];//get the first row  
+
+                return new clsRoom(
+                   row.Field<int>("room_id"),
+                   row.Field<int>("room_type_id"),
+                   row.Field<byte?>("room_status"),
+                   row.Field<decimal?>("room_rate"),
+                   row.Field<string>("room_description"),
+                   row.Field<byte?>("room_size"),
+                   row.Field<bool>("is_pet_friendly"),
+                   row.Field<bool>("is_smoking_allowed"),
+                   row.Field<int>("number_of_people"),
+                   row.Field<byte>("room_view"),
+                   row.Field<int>("room_number"),
+                   row.Field<int>("number_of_beds")
+                );
+            }
+            else
+                return null;
+        }
+
         //--GET ALL 
         public static DataTable GetAllRoom()
         {
             return clsRoomData.GetAllRooms();
+        }
+
+
+        public static DataTable GetAvailableRoom()
+        {
+            return clsRoomData.GetAvailableRooms();
+
+        }
+
+        public static List<clsRoom> GetAvailableRooms()
+        {
+            List<clsRoom> AvailableRooms = new List<clsRoom>();
+            DataTable dtRooms = clsRoomData.GetAvailableRooms();
+
+            if (dtRooms.Rows.Count > 0)
+            {
+                foreach (DataRow row in dtRooms.Rows)
+                {
+                    try
+                    {
+
+                        clsRoom Room = new clsRoom();
+                        Room.is_pet_friendly = row.Field<bool>("is_pet_friendly");
+                        Room.is_smoking_allowed = row.Field<bool>("is_smoking_allowed");
+                        Room.number_of_beds = row.Field<int>("number_of_beds");
+                        Room.number_of_people = row.Field<int>("number_of_people");
+                        Room.room_description = row.Field<string>("room_description");
+                        Room.room_number = row.Field<int>("room_number");
+                        Room.room_rate = row.Field<decimal?>("room_rate");
+                        Room.room_size = row.Field<byte>("room_size");
+                        Room.room_status = row.Field<byte>("room_status");
+                        Room.room_view = row.Field<byte>("room_view");
+                        Room.room_id = row.Field<int>("room_id");
+                        Room.room_type_id = row.Field<int>("room_type_id");
+                        Room._RoomType = clsRoomType.FindRoomTypeByID(row.Field<int>("room_type_id"));
+
+                        AvailableRooms.Add(Room);
+                    }
+                    catch (Exception ex)
+                    {
+                        clsErrorLog.LogMessageError(ex.Message + " ->Get Available Rooms Function Data access layer");
+                    }
+                }
+
+                return AvailableRooms;
+            }
+            else
+                return new List<clsRoom>();
         }
 
         //--IS EXISTS 

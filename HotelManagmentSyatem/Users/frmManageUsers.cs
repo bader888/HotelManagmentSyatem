@@ -1,5 +1,4 @@
 ﻿using HotelLogic;
-using MaterialSkin.Controls;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -25,9 +24,13 @@ namespace HotelManagmentSyatem.Users
         private void frmListUsers_Load(object sender, EventArgs e)
         {
             _dtAllUsers = clsUser.GetAlluser();
+
             dgvUsers.DataSource = _dtAllUsers;
+
             cbFilterBy.SelectedIndex = 0;
+
             lblCount.Text = dgvUsers.Rows.Count.ToString();
+
             cbActivationFilter.Visible = false;
         }
 
@@ -154,12 +157,12 @@ namespace HotelManagmentSyatem.Users
 
             if (clsUser.DeleteUserbyID((int)dgvUsers.CurrentRow.Cells[0].Value))
             {
-                MaterialMessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("User has been deleted successfully", "Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 frmListUsers_Load(null, null);
             }
 
             else
-                MaterialMessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("User is not delted due to data connected to it.", "Faild", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
         }
 

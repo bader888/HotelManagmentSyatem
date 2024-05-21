@@ -41,12 +41,8 @@
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges6 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges7 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
             Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges borderEdges8 = new Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderEdges();
-            this.materialTabControl1 = new MaterialSkin.Controls.MaterialTabControl();
             this.tabPageHotels = new System.Windows.Forms.TabPage();
             this.bunifuImageButton1 = new Bunifu.UI.WinForms.BunifuImageButton();
-            this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialTextBoxFilterBy = new MaterialSkin.Controls.MaterialTextBox();
-            this.materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
             this.bunifuDataGridView1 = new Bunifu.UI.WinForms.BunifuDataGridView();
             this.bunifuPictureBox1 = new Bunifu.UI.WinForms.BunifuPictureBox();
             this.bunifuLabel1 = new Bunifu.UI.WinForms.BunifuLabel();
@@ -62,7 +58,6 @@
             this.btnManagePeople = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.btnManageFacilities = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
             this.Home = new Bunifu.UI.WinForms.BunifuButton.BunifuButton();
-            this.materialTabControl1.SuspendLayout();
             this.tabPageHotels.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuPictureBox1)).BeginInit();
@@ -70,26 +65,10 @@
             this.bunifuPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // materialTabControl1
-            // 
-            this.materialTabControl1.Controls.Add(this.tabPageHotels);
-            this.materialTabControl1.Depth = 0;
-            this.materialTabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.materialTabControl1.ImageList = this.imageList1;
-            this.materialTabControl1.Location = new System.Drawing.Point(3, 64);
-            this.materialTabControl1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialTabControl1.Multiline = true;
-            this.materialTabControl1.Name = "materialTabControl1";
-            this.materialTabControl1.SelectedIndex = 0;
-            this.materialTabControl1.Size = new System.Drawing.Size(1084, 633);
-            this.materialTabControl1.TabIndex = 0;
+      
             // 
             // tabPageHotels
             // 
-            this.tabPageHotels.Controls.Add(this.bunifuImageButton1);
-            this.tabPageHotels.Controls.Add(this.materialLabel1);
-            this.tabPageHotels.Controls.Add(this.materialTextBoxFilterBy);
-            this.tabPageHotels.Controls.Add(this.materialComboBox1);
             this.tabPageHotels.Controls.Add(this.bunifuDataGridView1);
             this.tabPageHotels.Controls.Add(this.bunifuPictureBox1);
             this.tabPageHotels.Controls.Add(this.bunifuLabel1);
@@ -137,58 +116,11 @@
             // 
             // materialLabel1
             // 
-            this.materialLabel1.AutoSize = true;
-            this.materialLabel1.Depth = 0;
-            this.materialLabel1.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialLabel1.Location = new System.Drawing.Point(83, 227);
-            this.materialLabel1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel1.Name = "materialLabel1";
-            this.materialLabel1.Size = new System.Drawing.Size(69, 19);
-            this.materialLabel1.TabIndex = 8;
-            this.materialLabel1.Text = "Filter by : ";
-            // 
+        
             // materialTextBoxFilterBy
-            // 
-            this.materialTextBoxFilterBy.AnimateReadOnly = false;
-            this.materialTextBoxFilterBy.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.materialTextBoxFilterBy.Depth = 0;
-            this.materialTextBoxFilterBy.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            this.materialTextBoxFilterBy.LeadingIcon = null;
-            this.materialTextBoxFilterBy.Location = new System.Drawing.Point(213, 249);
-            this.materialTextBoxFilterBy.MaxLength = 50;
-            this.materialTextBoxFilterBy.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialTextBoxFilterBy.Multiline = false;
-            this.materialTextBoxFilterBy.Name = "materialTextBoxFilterBy";
-            this.materialTextBoxFilterBy.Size = new System.Drawing.Size(234, 50);
-            this.materialTextBoxFilterBy.TabIndex = 7;
-            this.materialTextBoxFilterBy.Text = "";
-            this.materialTextBoxFilterBy.TrailingIcon = null;
-            // 
-            // materialComboBox1
-            // 
-            this.materialComboBox1.AutoResize = false;
-            this.materialComboBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialComboBox1.Depth = 0;
-            this.materialComboBox1.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.materialComboBox1.DropDownHeight = 174;
-            this.materialComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.materialComboBox1.DropDownWidth = 121;
-            this.materialComboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Pixel);
-            this.materialComboBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.materialComboBox1.FormattingEnabled = true;
-            this.materialComboBox1.IntegralHeight = false;
-            this.materialComboBox1.ItemHeight = 43;
-            this.materialComboBox1.Items.AddRange(new object[] {
-            "ID",
-            "Number",
-            "Name"});
-            this.materialComboBox1.Location = new System.Drawing.Point(86, 249);
-            this.materialComboBox1.MaxDropDownItems = 4;
-            this.materialComboBox1.MouseState = MaterialSkin.MouseState.OUT;
-            this.materialComboBox1.Name = "materialComboBox1";
-            this.materialComboBox1.Size = new System.Drawing.Size(121, 49);
-            this.materialComboBox1.StartIndex = 0;
-            this.materialComboBox1.TabIndex = 5;
+        
+        
+        ;
             // 
             // bunifuDataGridView1
             // 
@@ -452,10 +384,10 @@
             this.bunifuButton6.AutoSizeLeftIcon = true;
             this.bunifuButton6.AutoSizeRightIcon = true;
             this.bunifuButton6.BackColor = System.Drawing.Color.Transparent;
-            this.bunifuButton6.BackColor1 = System.Drawing.Color.DodgerBlue;
+            this.bunifuButton6.BackColor1 = System.Drawing.Color.Black;
             this.bunifuButton6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton6.BackgroundImage")));
             this.bunifuButton6.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
-            this.bunifuButton6.ButtonText = "bunifuButton6";
+            this.bunifuButton6.ButtonText = "Manage Reservations";
             this.bunifuButton6.ButtonTextMarginLeft = 0;
             this.bunifuButton6.ColorContrastOnClick = 45;
             this.bunifuButton6.ColorContrastOnHover = 45;
@@ -484,7 +416,7 @@
             this.bunifuButton6.IdleBorderColor = System.Drawing.Color.DodgerBlue;
             this.bunifuButton6.IdleBorderRadius = 5;
             this.bunifuButton6.IdleBorderThickness = 1;
-            this.bunifuButton6.IdleFillColor = System.Drawing.Color.DodgerBlue;
+            this.bunifuButton6.IdleFillColor = System.Drawing.Color.Black;
             this.bunifuButton6.IdleIconLeftImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton6.IdleIconLeftImage")));
             this.bunifuButton6.IdleIconRightImage = null;
             this.bunifuButton6.IndicateFocus = false;
@@ -510,7 +442,7 @@
             this.bunifuButton6.OnIdleState.BorderRadius = 5;
             this.bunifuButton6.OnIdleState.BorderStyle = Bunifu.UI.WinForms.BunifuButton.BunifuButton.BorderStyles.Solid;
             this.bunifuButton6.OnIdleState.BorderThickness = 1;
-            this.bunifuButton6.OnIdleState.FillColor = System.Drawing.Color.DodgerBlue;
+            this.bunifuButton6.OnIdleState.FillColor = System.Drawing.Color.Black;
             this.bunifuButton6.OnIdleState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton6.OnIdleState.IconLeftImage = ((System.Drawing.Image)(resources.GetObject("bunifuButton6.OnIdleState.IconLeftImage")));
             this.bunifuButton6.OnIdleState.IconRightImage = null;
@@ -522,13 +454,14 @@
             this.bunifuButton6.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton6.OnPressedState.IconLeftImage = null;
             this.bunifuButton6.OnPressedState.IconRightImage = null;
-            this.bunifuButton6.Size = new System.Drawing.Size(140, 39);
+            this.bunifuButton6.Size = new System.Drawing.Size(150, 39);
             this.bunifuButton6.TabIndex = 6;
             this.bunifuButton6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton6.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
             this.bunifuButton6.TextMarginLeft = 0;
             this.bunifuButton6.TextPadding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.bunifuButton6.UseDefaultRadiusAndThickness = true;
+            this.bunifuButton6.Click += new System.EventHandler(this.bunifuButton6_Click);
             // 
             // bunifuButton4
             // 
@@ -701,7 +634,7 @@
             this.bunifuButton5.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton5.OnPressedState.IconLeftImage = null;
             this.bunifuButton5.OnPressedState.IconRightImage = null;
-            this.bunifuButton5.Size = new System.Drawing.Size(140, 39);
+            this.bunifuButton5.Size = new System.Drawing.Size(150, 39);
             this.bunifuButton5.TabIndex = 4;
             this.bunifuButton5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton5.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -791,7 +724,7 @@
             this.bunifuButton2.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.bunifuButton2.OnPressedState.IconLeftImage = null;
             this.bunifuButton2.OnPressedState.IconRightImage = null;
-            this.bunifuButton2.Size = new System.Drawing.Size(140, 39);
+            this.bunifuButton2.Size = new System.Drawing.Size(150, 39);
             this.bunifuButton2.TabIndex = 3;
             this.bunifuButton2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.bunifuButton2.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -881,7 +814,7 @@
             this.btnManagePeople.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnManagePeople.OnPressedState.IconLeftImage = null;
             this.btnManagePeople.OnPressedState.IconRightImage = null;
-            this.btnManagePeople.Size = new System.Drawing.Size(140, 39);
+            this.btnManagePeople.Size = new System.Drawing.Size(150, 39);
             this.btnManagePeople.TabIndex = 2;
             this.btnManagePeople.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnManagePeople.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -971,7 +904,7 @@
             this.btnManageFacilities.OnPressedState.ForeColor = System.Drawing.Color.White;
             this.btnManageFacilities.OnPressedState.IconLeftImage = null;
             this.btnManageFacilities.OnPressedState.IconRightImage = null;
-            this.btnManageFacilities.Size = new System.Drawing.Size(140, 39);
+            this.btnManageFacilities.Size = new System.Drawing.Size(150, 39);
             this.btnManageFacilities.TabIndex = 1;
             this.btnManageFacilities.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.btnManageFacilities.TextAlignment = System.Windows.Forms.HorizontalAlignment.Center;
@@ -1080,7 +1013,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Al-Bader Hotel";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.materialTabControl1.ResumeLayout(false);
             this.tabPageHotels.ResumeLayout(false);
             this.tabPageHotels.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuDataGridView1)).EndInit();
@@ -1094,15 +1026,11 @@
 
         #endregion
 
-        private MaterialSkin.Controls.MaterialTabControl materialTabControl1;
         private System.Windows.Forms.TabPage tabPageHotels;
         private System.Windows.Forms.ImageList imageList1;
         private Bunifu.UI.WinForms.BunifuLabel bunifuLabel1;
         private Bunifu.UI.WinForms.BunifuPictureBox bunifuPictureBox1;
         private Bunifu.UI.WinForms.BunifuDataGridView bunifuDataGridView1;
-        private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
-        private MaterialSkin.Controls.MaterialTextBox materialTextBoxFilterBy;
-        private MaterialSkin.Controls.MaterialLabel materialLabel1;
         private Bunifu.UI.WinForms.BunifuImageButton bunifuImageButton1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel1;
         private Bunifu.UI.WinForms.BunifuPanel bunifuPanel2;

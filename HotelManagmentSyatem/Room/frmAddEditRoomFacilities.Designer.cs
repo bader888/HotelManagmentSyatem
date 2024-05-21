@@ -615,10 +615,10 @@
             this.Controls.Add(this.bunifuShadowPanel2);
             this.Controls.Add(this.lblHeader);
             this.Controls.Add(this.bunifuSeparator1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "frmAddEditRoomFacilities";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmAddEditRoomFacilities";
+            this.Text = "Add Room Facilities";
             this.Load += new System.EventHandler(this.frmAddEditRoomFacilities_Load);
             this.bunifuShadowPanel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFacilities)).EndInit();

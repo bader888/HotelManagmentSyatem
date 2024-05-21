@@ -9,6 +9,7 @@ namespace HotelData
 
         public static void LogMessageError(string messageError)
         {
+
             //log the error in event viewer
 
             // Create the event source if it does not exist
